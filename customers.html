@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow customer management dashboard."
+    >
+
+    <title>Customers | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">A</span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+
+            <a href="index.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="products.html" class="nav-link">
+
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span>
+                    Products
+                </span>
+
+            </a>
+
+
+            <a href="orders.html" class="nav-link">
+
+                <span class="nav-icon">
+                    🛒
+                </span>
+
+                <span>
+                    Orders
+                </span>
+
+                <span class="nav-badge">
+                    12
+                </span>
+
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-link active"
+            >
+
+                <span class="nav-icon">
+                    ♙
+                </span>
+
+                <span>
+                    Customers
+                </span>
+
+            </a>
+
+
+            <a href="analytics.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ◒
+                </span>
+
+                <span>
+                    Analytics
+                </span>
+
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a href="settings.html" class="nav-link">
+
+                <span class="nav-icon">⚙</span>
+                
+                <span>Settings</span>
+            </a>
+
+
+            <a href="help.html" class="nav-link">
+
+                <span class="nav-icon">?</span>
+
+                <span>Help Center</span>
+                
+            </a>
+
+        </nav>
+
+
+        <!-- ======================================
+             SIDEBAR USER
+        ======================================= -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Customers
+                    </h1>
+
+                    <p>
+                        Manage and understand your customers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="customerSearch"
+                        placeholder="Search customers..."
+                        aria-label="Search customers"
+                    >
+
+                </div>
+
+
+                <!-- Theme -->
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <!-- Notification -->
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+
+                    ♢
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <!-- Profile -->
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             DASHBOARD CONTENT
+        ======================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- ==================================
+                 PAGE HEADING
+            =================================== -->
+
+            <div class="products-page-heading">
+
+                <div>
+
+                    <h2>
+                        Customer Management
+                    </h2>
+
+                    <p>
+                        View customer activity, spending and order history.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="add-product-btn"
+                    id="exportCustomersBtn"
+                >
+                    ↓ Export Customers
+                </button>
+
+            </div>
+
+
+            <!-- ==================================
+                 CUSTOMER STATS
+            =================================== -->
+
+            <section class="product-stats-grid">
+
+
+                <!-- Total Customers -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ♙
+                        </div>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Total Customers
+                    </p>
+
+
+                    <h3 id="customerCount">
+                        0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Registered customers
+                    </p>
+
+                </article>
+
+
+                <!-- Active Customers -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ✓
+                        </div>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Active Customers
+                    </p>
+
+
+                    <h3 id="activeCustomerCount">
+                        0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Customers with active accounts
+                    </p>
+
+                </article>
+
+
+                <!-- Total Spending -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            R
+                        </div>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Customer Spending
+                    </p>
+
+
+                    <h3 id="customerSpending">
+                        R0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Total customer purchases
+                    </p>
+
+                </article>
+
+
+                <!-- Average Order -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ↗
+                        </div>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Average Spend
+                    </p>
+
+
+                    <h3 id="averageCustomerSpend">
+                        R0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Average spend per customer
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 CUSTOMER TABLE
+            =================================== -->
+
+            <section
+                class="dashboard-card products-table-card"
+            >
+
+
+                <!-- Toolbar -->
+
+                <div class="products-toolbar">
+
+                    <div>
+
+                        <h3>
+                            All Customers
+                        </h3>
+
+                        <p>
+                            Customer accounts and purchasing activity
+                        </p>
+
+                    </div>
+
+
+                    <div class="product-filters">
+
+
+                        <!-- Status -->
+
+                        <select
+                            id="customerStatusFilter"
+                            aria-label="Filter customers by status"
+                        >
+
+                            <option value="all">
+                                All Customers
+                            </option>
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+
+                        <!-- Sort -->
+
+                        <select
+                            id="customerSort"
+                            aria-label="Sort customers"
+                        >
+
+                            <option value="newest">
+                                Newest Customers
+                            </option>
+
+                            <option value="oldest">
+                                Oldest Customers
+                            </option>
+
+                            <option value="highest">
+                                Highest Spending
+                            </option>
+
+                            <option value="lowest">
+                                Lowest Spending
+                            </option>
+
+                            <option value="orders">
+                                Most Orders
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================
+                     TABLE
+                =================================== -->
+
+                <div class="table-wrapper">
+
+                    <table class="customers-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    CUSTOMER
+                                </th>
+
+                                <th>
+                                    LOCATION
+                                </th>
+
+                                <th>
+                                    JOINED
+                                </th>
+
+                                <th>
+                                    ORDERS
+                                </th>
+
+                                <th>
+                                    TOTAL SPENT
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th>
+                                    ACTION
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="customersTableBody">
+
+                            <!-- Customers generated by JavaScript -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ==================================
+                     EMPTY STATE
+                =================================== -->
+
+                <div
+                    class="products-empty-state"
+                    id="customersEmptyState"
+                    hidden
+                >
+
+                    <div>
+                        ♙
+                    </div>
+
+
+                    <h3>
+                        No customers found
+                    </h3>
+
+
+                    <p>
+                        Try changing your search or filters.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     SIDEBAR OVERLAY
+=========================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- ==========================================
+     CUSTOMER DETAILS MODAL
+=========================================== -->
+
+<div
+    class="product-modal-overlay"
+    id="customerModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="product-modal customer-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="customerModalTitle"
+    >
+
+
+        <!-- ======================================
+             MODAL HEADER
+        ======================================= -->
+
+        <div class="product-modal-header">
+
+            <div>
+
+                <h2 id="customerModalTitle">
+                    Customer Details
+                </h2>
+
+                <p>
+                    Customer account and activity information.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCustomerModal"
+                aria-label="Close customer details"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- ======================================
+             MODAL BODY
+        ======================================= -->
+
+        <div class="order-details-body">
+
+
+            <!-- ==================================
+                 CUSTOMER PROFILE
+            =================================== -->
+
+            <div class="customer-profile-header">
+
+                <div
+                    class="customer-profile-avatar"
+                    id="modalCustomerProfileAvatar"
+                >
+                    TS
+                </div>
+
+
+                <div class="customer-profile-info">
+
+                    <h3 id="modalCustomerProfileName">
+                        Customer Name
+                    </h3>
+
+
+                    <p id="modalCustomerProfileEmail">
+                        customer@example.com
+                    </p>
+
+
+                    <span
+                        class="status completed"
+                        id="modalCustomerStatus"
+                    >
+                        Active
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================
+                 CUSTOMER STATS
+            =================================== -->
+
+            <div class="customer-modal-stats">
+
+
+                <div>
+
+                    <span>
+                        Total Orders
+                    </span>
+
+                    <strong id="modalCustomerOrders">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Total Spent
+                    </span>
+
+                    <strong id="modalCustomerSpent">
+                        R0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Average Order
+                    </span>
+
+                    <strong id="modalCustomerAverage">
+                        R0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================
+                 CONTACT INFORMATION
+            =================================== -->
+
+            <div class="order-detail-section">
+
+                <h3>
+                    Contact Information
+                </h3>
+
+
+                <div class="customer-contact-grid">
+
+
+                    <div>
+
+                        <span>
+                            Email Address
+                        </span>
+
+                        <strong id="modalCustomerEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Phone Number
+                        </span>
+
+                        <strong id="modalCustomerPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Location
+                        </span>
+
+                        <strong id="modalCustomerLocation">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Joined
+                        </span>
+
+                        <strong id="modalCustomerJoined">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================
+                 RECENT ORDERS
+            =================================== -->
+
+            <div class="order-detail-section">
+
+                <h3>
+                    Recent Orders
+                </h3>
+
+
+                <div
+                    class="customer-order-history"
+                    id="customerOrderHistory"
+                >
+
+                    <!-- Generated with JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================
+                 ACCOUNT STATUS
+            =================================== -->
+
+            <div class="order-detail-section">
+
+                <label for="customerAccountStatus">
+
+                    <h3>
+                        Account Status
+                    </h3>
+
+                </label>
+
+
+                <select
+                    id="customerAccountStatus"
+                    class="order-status-select"
+                >
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ==================================
+                 ACTIONS
+            =================================== -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-product-btn"
+                    id="cancelCustomerModal"
+                >
+                    Close
+                </button>
+
+
+                <button
+                    type="button"
+                    class="save-product-btn"
+                    id="updateCustomerBtn"
+                >
+                    Update Customer
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>

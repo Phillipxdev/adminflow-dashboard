@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow order management dashboard."
+    >
+
+    <title>Orders | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">A</span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MENU</p>
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="products.html" class="nav-link">
+                <span class="nav-icon">□</span>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html" class="nav-link active">
+                <span class="nav-icon">🛒</span>
+                <span>Orders</span>
+
+                <span
+                    class="nav-badge"
+                    id="ordersBadge"
+                >
+                    12
+                </span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                <span>Customers</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                <span class="nav-icon">◒</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+            <a href="settings.html" class="nav-link">
+
+                <span class="nav-icon">⚙</span>
+                
+                <span>Settings</span>
+            </a>
+
+            <a href="help.html" class="nav-link">
+
+                <span class="nav-icon">?</span>
+
+                <span>Help Center</span>
+                
+            </a>
+
+        </nav>
+
+
+        <!-- User -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Orders
+                    </h1>
+
+                    <p>
+                        Track and manage customer orders.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="orderSearch"
+                        placeholder="Search orders..."
+                        aria-label="Search orders"
+                    >
+
+                </div>
+
+
+                <!-- Theme -->
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <!-- Notifications -->
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+                    ♢
+
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <!-- Profile -->
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             CONTENT
+        ======================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- ==================================
+                 PAGE HEADING
+            =================================== -->
+
+            <div class="products-page-heading">
+
+                <div>
+
+                    <h2>
+                        Order Management
+                    </h2>
+
+                    <p>
+                        View orders and update their current status.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="add-product-btn"
+                    id="exportOrdersBtn"
+                >
+                    ↓ Export Orders
+                </button>
+
+            </div>
+
+
+            <!-- ==================================
+                 ORDER STATISTICS
+            =================================== -->
+
+            <section class="product-stats-grid">
+
+
+                <!-- Total -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            #
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Total Orders
+                    </p>
+
+                    <h3 id="totalOrderCount">
+                        12
+                    </h3>
+
+                    <p class="stat-description">
+                        All customer orders
+                    </p>
+
+                </article>
+
+
+                <!-- Pending -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ◷
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Pending
+                    </p>
+
+                    <h3 id="pendingOrderCount">
+                        3
+                    </h3>
+
+                    <p class="stat-description">
+                        Awaiting processing
+                    </p>
+
+                </article>
+
+
+                <!-- Processing -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ↻
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Processing
+                    </p>
+
+                    <h3 id="processingOrderCount">
+                        3
+                    </h3>
+
+                    <p class="stat-description">
+                        Currently being processed
+                    </p>
+
+                </article>
+
+
+                <!-- Revenue -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            R
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Order Revenue
+                    </p>
+
+                    <h3 id="orderRevenue">
+                        R0
+                    </h3>
+
+                    <p class="stat-description">
+                        Revenue from active orders
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 ORDERS TABLE
+            =================================== -->
+
+            <section class="dashboard-card products-table-card">
+
+
+                <!-- Toolbar -->
+
+                <div class="products-toolbar">
+
+                    <div>
+
+                        <h3>
+                            All Orders
+                        </h3>
+
+                        <p>
+                            Review and manage customer purchases
+                        </p>
+
+                    </div>
+
+
+                    <div class="product-filters">
+
+
+                        <!-- Status filter -->
+
+                        <select
+                            id="orderStatusFilter"
+                            aria-label="Filter orders by status"
+                        >
+
+                            <option value="all">
+                                All Statuses
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Processing">
+                                Processing
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="Cancelled">
+                                Cancelled
+                            </option>
+
+                        </select>
+
+
+                        <!-- Sort -->
+
+                        <select
+                            id="orderSort"
+                            aria-label="Sort orders"
+                        >
+
+                            <option value="newest">
+                                Newest First
+                            </option>
+
+                            <option value="oldest">
+                                Oldest First
+                            </option>
+
+                            <option value="highest">
+                                Highest Amount
+                            </option>
+
+                            <option value="lowest">
+                                Lowest Amount
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================
+                     TABLE
+                =================================== -->
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ORDER</th>
+
+                                <th>CUSTOMER</th>
+
+                                <th>DATE</th>
+
+                                <th>ITEMS</th>
+
+                                <th>AMOUNT</th>
+
+                                <th>PAYMENT</th>
+
+                                <th>STATUS</th>
+
+                                <th>ACTION</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ordersTableBody">
+
+                            <!-- JavaScript will generate orders here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ==================================
+                     EMPTY STATE
+                =================================== -->
+
+                <div
+                    class="products-empty-state"
+                    id="ordersEmptyState"
+                    hidden
+                >
+
+                    <div>
+                        🛒
+                    </div>
+
+                    <h3>
+                        No orders found
+                    </h3>
+
+                    <p>
+                        Try changing your search or status filter.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     SIDEBAR OVERLAY
+=========================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- ==========================================
+     ORDER DETAILS MODAL
+=========================================== -->
+
+<div
+    class="product-modal-overlay"
+    id="orderModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="product-modal order-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="orderModalTitle"
+    >
+
+
+        <!-- Modal Header -->
+
+        <div class="product-modal-header">
+
+            <div>
+
+                <h2 id="orderModalTitle">
+                    Order Details
+                </h2>
+
+                <p id="orderModalSubtitle">
+                    View customer order information.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeOrderModal"
+                aria-label="Close order details"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- ==================================
+             ORDER INFORMATION
+        =================================== -->
+
+        <div class="order-details-body">
+
+
+            <!-- Customer -->
+
+            <div class="order-detail-section">
+
+                <h3>
+                    Customer
+                </h3>
+
+
+                <div class="order-customer-card">
+
+                    <div
+                        class="customer-avatar"
+                        id="modalCustomerAvatar"
+                    >
+                        TS
+                    </div>
+
+
+                    <div>
+
+                        <strong id="modalCustomerName">
+                            Customer
+                        </strong>
+
+                        <span id="modalCustomerEmail">
+                            customer@email.com
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Information -->
+
+            <div class="order-detail-section">
+
+                <h3>
+                    Order Information
+                </h3>
+
+
+                <div class="order-info-grid">
+
+
+                    <div>
+
+                        <span>
+                            Order ID
+                        </span>
+
+                        <strong id="modalOrderId">
+                            #ORD-000
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Date
+                        </span>
+
+                        <strong id="modalOrderDate">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Payment
+                        </span>
+
+                        <strong id="modalPayment">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="modalOrderTotal">
+                            R0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Products -->
+
+            <div class="order-detail-section">
+
+                <h3>
+                    Products
+                </h3>
+
+                <div
+                    class="modal-order-products"
+                    id="modalOrderProducts"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- Status -->
+
+            <div class="order-detail-section">
+
+                <label for="modalOrderStatus">
+
+                    <h3>
+                        Update Status
+                    </h3>
+
+                </label>
+
+
+                <select
+                    id="modalOrderStatus"
+                    class="order-status-select"
+                >
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                    <option value="Processing">
+                        Processing
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                    <option value="Cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-product-btn"
+                    id="cancelOrderModal"
+                >
+                    Close
+                </button>
+
+
+                <button
+                    type="button"
+                    class="save-product-btn"
+                    id="updateOrderStatusBtn"
+                >
+                    Update Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

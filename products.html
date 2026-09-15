@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow product management dashboard."
+    >
+
+    <title>Products | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">A</span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+
+            <a href="index.html" class="nav-link">
+
+                <span class="nav-icon">▦</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="products.html" class="nav-link active">
+
+                <span class="nav-icon">□</span>
+
+                <span>Products</span>
+
+            </a>
+
+
+            <a href="orders.html" class="nav-link">
+
+                <span class="nav-icon">🛒</span>
+
+                <span>Orders</span>
+
+                <span class="nav-badge">
+                    12
+                </span>
+
+            </a>
+
+
+            <a href="customers.html" class="nav-link">
+
+                <span class="nav-icon">♙</span>
+
+                <span>Customers</span>
+
+            </a>
+
+
+            <a href="analytics.html" class="nav-link">
+
+                <span class="nav-icon">◒</span>
+
+                <span>Analytics</span>
+
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a href="settings.html" class="nav-link">
+
+                <span class="nav-icon">⚙</span>
+                
+                <span>Settings</span>
+            </a>
+
+
+            <a href="help.html" class="nav-link">
+
+                <span class="nav-icon">?</span>
+
+                <span>Help Center</span>
+                
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Products
+                    </h1>
+
+                    <p>
+                        Manage your store products and inventory.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        id="productSearch"
+                        placeholder="Search products..."
+                        aria-label="Search products"
+                    >
+
+                </div>
+
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+
+                    ♢
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             PRODUCTS CONTENT
+        ======================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- Page heading -->
+
+            <div class="products-page-heading">
+
+                <div>
+
+                    <h2>
+                        Product Management
+                    </h2>
+
+                    <p>
+                        Add, edit and manage your store products.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="add-product-btn"
+                    id="addProductBtn"
+                >
+                    <span>+</span>
+
+                    Add Product
+                </button>
+
+            </div>
+
+
+            <!-- ==================================
+                 PRODUCT STATS
+            =================================== -->
+
+            <section class="product-stats-grid">
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            □
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Total Products
+                    </p>
+
+                    <h3 id="productCount">
+                        6
+                    </h3>
+
+                    <p class="stat-description">
+                        Products in your store
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ✓
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        In Stock
+                    </p>
+
+                    <h3 id="inStockCount">
+                        5
+                    </h3>
+
+                    <p class="stat-description">
+                        Available products
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            !
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Low Stock
+                    </p>
+
+                    <h3 id="lowStockCount">
+                        1
+                    </h3>
+
+                    <p class="stat-description">
+                        Requires attention
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            R
+                        </div>
+
+                    </div>
+
+                    <p class="stat-label">
+                        Inventory Value
+                    </p>
+
+                    <h3 id="inventoryValue">
+                        R15,994
+                    </h3>
+
+                    <p class="stat-description">
+                        Total stock value
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 PRODUCTS TABLE
+            =================================== -->
+
+            <section class="dashboard-card products-table-card">
+
+
+                <!-- Toolbar -->
+
+                <div class="products-toolbar">
+
+
+                    <div>
+
+                        <h3>
+                            All Products
+                        </h3>
+
+                        <p>
+                            Manage your product catalogue
+                        </p>
+
+                    </div>
+
+
+                    <div class="product-filters">
+
+
+                        <select
+                            id="categoryFilter"
+                            aria-label="Filter by category"
+                        >
+
+                            <option value="all">
+                                All Categories
+                            </option>
+
+                            <option value="Electronics">
+                                Electronics
+                            </option>
+
+                            <option value="Fashion">
+                                Fashion
+                            </option>
+
+                            <option value="Home">
+                                Home
+                            </option>
+
+                            <option value="Accessories">
+                                Accessories
+                            </option>
+
+                        </select>
+
+
+                        <select
+                            id="stockFilter"
+                            aria-label="Filter by stock"
+                        >
+
+                            <option value="all">
+                                All Stock
+                            </option>
+
+                            <option value="stock">
+                                In Stock
+                            </option>
+
+                            <option value="low">
+                                Low Stock
+                            </option>
+
+                            <option value="out">
+                                Out of Stock
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="products-table">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>PRODUCT</th>
+
+                            <th>CATEGORY</th>
+
+                            <th>PRICE</th>
+
+                            <th>STOCK</th>
+
+                            <th>STATUS</th>
+
+                            <th>SALES</th>
+
+                            <th>ACTIONS</th>
+
+                        </tr>
+
+                        </thead>
+
+
+                        <tbody id="productsTableBody">
+
+
+                        <!-- Product 1 -->
+
+                        <tr data-id="1">
+
+                            <td>
+
+                                <div class="product-table-info">
+
+                                    <div class="table-product-image">
+                                        🎧
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Wireless Headphones
+                                        </strong>
+
+                                        <span>
+                                            WH-001
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Electronics
+                            </td>
+
+
+                            <td>
+                                <strong>
+                                    R1,299
+                                </strong>
+                            </td>
+
+
+                            <td>
+                                42
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                246
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="edit-product-btn"
+                                        data-id="1"
+                                        title="Edit product"
+                                    >
+                                        ✎
+                                    </button>
+
+                                    <button
+                                        class="delete-product-btn"
+                                        data-id="1"
+                                        title="Delete product"
+                                    >
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Product 2 -->
+
+                        <tr data-id="2">
+
+                            <td>
+
+                                <div class="product-table-info">
+
+                                    <div class="table-product-image">
+                                        ⌚
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Smart Watch
+                                        </strong>
+
+                                        <span>
+                                            SW-002
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Electronics
+                            </td>
+
+
+                            <td>
+                                <strong>
+                                    R2,499
+                                </strong>
+                            </td>
+
+
+                            <td>
+                                28
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                198
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="edit-product-btn"
+                                        data-id="2"
+                                    >
+                                        ✎
+                                    </button>
+
+                                    <button
+                                        class="delete-product-btn"
+                                        data-id="2"
+                                    >
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Product 3 -->
+
+                        <tr data-id="3">
+
+                            <td>
+
+                                <div class="product-table-info">
+
+                                    <div class="table-product-image">
+                                        👟
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Running Shoes
+                                        </strong>
+
+                                        <span>
+                                            RS-003
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Fashion
+                            </td>
+
+
+                            <td>
+                                <strong>
+                                    R1,899
+                                </strong>
+                            </td>
+
+
+                            <td>
+                                35
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                174
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="edit-product-btn"
+                                        data-id="3"
+                                    >
+                                        ✎
+                                    </button>
+
+                                    <button
+                                        class="delete-product-btn"
+                                        data-id="3"
+                                    >
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Product 4 -->
+
+                        <tr data-id="4">
+
+                            <td>
+
+                                <div class="product-table-info">
+
+                                    <div class="table-product-image">
+                                        🎒
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Classic Backpack
+                                        </strong>
+
+                                        <span>
+                                            CB-004
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Accessories
+                            </td>
+
+
+                            <td>
+                                <strong>
+                                    R899
+                                </strong>
+                            </td>
+
+
+                            <td>
+                                4
+                            </td>
+
+
+                            <td>
+
+                                <span class="status pending">
+                                    Low Stock
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                132
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="edit-product-btn"
+                                        data-id="4"
+                                    >
+                                        ✎
+                                    </button>
+
+                                    <button
+                                        class="delete-product-btn"
+                                        data-id="4"
+                                    >
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Product 5 -->
+
+                        <tr data-id="5">
+
+                            <td>
+
+                                <div class="product-table-info">
+
+                                    <div class="table-product-image">
+                                        👕
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Premium T-Shirt
+                                        </strong>
+
+                                        <span>
+                                            PT-005
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Fashion
+                            </td>
+
+
+                            <td>
+                                <strong>
+                                    R499
+                                </strong>
+                            </td>
+
+
+                            <td>
+                                67
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                121
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="edit-product-btn"
+                                        data-id="5"
+                                    >
+                                        ✎
+                                    </button>
+
+                                    <button
+                                        class="delete-product-btn"
+                                        data-id="5"
+                                    >
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Product 6 -->
+
+                        <tr data-id="6">
+
+                            <td>
+
+                                <div class="product-table-info">
+
+                                    <div class="table-product-image">
+                                        💡
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Desk Lamp
+                                        </strong>
+
+                                        <span>
+                                            DL-006
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                Home
+                            </td>
+
+
+                            <td>
+                                <strong>
+                                    R699
+                                </strong>
+                            </td>
+
+
+                            <td>
+                                21
+                            </td>
+
+
+                            <td>
+
+                                <span class="status completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                86
+                            </td>
+
+
+                            <td>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="edit-product-btn"
+                                        data-id="6"
+                                    >
+                                        ✎
+                                    </button>
+
+                                    <button
+                                        class="delete-product-btn"
+                                        data-id="6"
+                                    >
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty state -->
+
+                <div
+                    class="products-empty-state"
+                    id="productsEmptyState"
+                    hidden
+                >
+
+                    <div>
+                        ⌕
+                    </div>
+
+                    <h3>
+                        No products found
+                    </h3>
+
+                    <p>
+                        Try changing your search or filters.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     SIDEBAR OVERLAY
+=========================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<!-- ==========================================
+     ADD / EDIT PRODUCT MODAL
+=========================================== -->
+
+<div
+    class="product-modal-overlay"
+    id="productModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="product-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="productModalTitle"
+    >
+
+
+        <!-- Modal header -->
+
+        <div class="product-modal-header">
+
+            <div>
+
+                <h2 id="productModalTitle">
+                    Add Product
+                </h2>
+
+                <p>
+                    Enter your product information.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeProductModal"
+                aria-label="Close product modal"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- Product form -->
+
+        <form id="productForm">
+
+            <input
+                type="hidden"
+                id="productId"
+            >
+
+
+            <div class="form-group">
+
+                <label for="productName">
+                    Product Name
+                </label>
+
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="e.g. Wireless Headphones"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="productSku">
+                        SKU
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productSku"
+                        placeholder="e.g. WH-001"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productCategory">
+                        Category
+                    </label>
+
+                    <select
+                        id="productCategory"
+                        required
+                    >
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Fashion">
+                            Fashion
+                        </option>
+
+                        <option value="Home">
+                            Home
+                        </option>
+
+                        <option value="Accessories">
+                            Accessories
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="productPrice">
+                        Price (R)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        min="0"
+                        step="0.01"
+                        placeholder="1299"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productStock">
+                        Stock
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productStock"
+                        min="0"
+                        placeholder="20"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="productEmoji">
+                    Product Icon
+                </label>
+
+                <input
+                    type="text"
+                    id="productEmoji"
+                    maxlength="4"
+                    placeholder="🎧"
+                >
+
+                <small>
+                    You can temporarily use an emoji as the
+                    product image.
+                </small>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="productDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="productDescription"
+                    rows="4"
+                    placeholder="Enter a short product description..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- Modal buttons -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-product-btn"
+                    id="cancelProductBtn"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-product-btn"
+                >
+                    Save Product
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>

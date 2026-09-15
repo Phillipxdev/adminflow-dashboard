@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow sales and business analytics dashboard."
+    >
+
+    <title>Analytics | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    A
+                </span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+
+            <a href="index.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="products.html" class="nav-link">
+
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span>
+                    Products
+                </span>
+
+            </a>
+
+
+            <a href="orders.html" class="nav-link">
+
+                <span class="nav-icon">
+                    🛒
+                </span>
+
+                <span>
+                    Orders
+                </span>
+
+                <span
+                    class="nav-badge"
+                    id="ordersBadge"
+                >
+                    12
+                </span>
+
+            </a>
+
+
+            <a href="customers.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ♙
+                </span>
+
+                <span>
+                    Customers
+                </span>
+
+            </a>
+
+
+            <a
+                href="analytics.html"
+                class="nav-link active"
+            >
+
+                <span class="nav-icon">
+                    ◒
+                </span>
+
+                <span>
+                    Analytics
+                </span>
+
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a href="settings.html" class="nav-link">
+
+                <span class="nav-icon">⚙</span>
+                
+                <span>Settings</span>
+            </a>
+
+
+            <a href="help.html" class="nav-link">
+
+                <span class="nav-icon">?</span>
+
+                <span>Help Center</span>
+                
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar User -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Analytics
+                    </h1>
+
+                    <p>
+                        Monitor sales and business performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+
+                <!-- Theme -->
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <!-- Notifications -->
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+
+                    ♢
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <!-- Profile -->
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             CONTENT
+        ======================================= -->
+
+        <div class="dashboard-content">
+
+
+            <!-- ==================================
+                 ANALYTICS HEADING
+            =================================== -->
+
+            <div class="products-page-heading">
+
+                <div>
+
+                    <h2>
+                        Business Analytics
+                    </h2>
+
+                    <p>
+                        Track revenue, orders, customers and product performance.
+                    </p>
+
+                </div>
+
+
+                <select
+                    id="analyticsPeriod"
+                    class="analytics-period-select"
+                    aria-label="Analytics period"
+                >
+
+                    <option value="7">
+                        Last 7 Days
+                    </option>
+
+                    <option value="30" selected>
+                        Last 30 Days
+                    </option>
+
+                    <option value="90">
+                        Last 90 Days
+                    </option>
+
+                    <option value="all">
+                        All Time
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ==================================
+                 ANALYTICS STATS
+            =================================== -->
+
+            <section class="product-stats-grid">
+
+
+                <!-- Revenue -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            R
+                        </div>
+
+                        <span
+                            class="analytics-change positive"
+                            id="revenueChange"
+                        >
+                            +0%
+                        </span>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Total Revenue
+                    </p>
+
+
+                    <h3 id="analyticsRevenue">
+                        R0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Revenue from valid orders
+                    </p>
+
+                </article>
+
+
+                <!-- Orders -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            #
+                        </div>
+
+                        <span
+                            class="analytics-change positive"
+                            id="ordersChange"
+                        >
+                            +0%
+                        </span>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Orders
+                    </p>
+
+
+                    <h3 id="analyticsOrders">
+                        0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Orders during this period
+                    </p>
+
+                </article>
+
+
+                <!-- Customers -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ♙
+                        </div>
+
+                        <span
+                            class="analytics-change positive"
+                            id="customersChange"
+                        >
+                            +0%
+                        </span>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Customers
+                    </p>
+
+
+                    <h3 id="analyticsCustomers">
+                        0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Customers placing orders
+                    </p>
+
+                </article>
+
+
+                <!-- Average Order -->
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div class="stat-icon">
+                            ↗
+                        </div>
+
+                    </div>
+
+
+                    <p class="stat-label">
+                        Average Order Value
+                    </p>
+
+
+                    <h3 id="averageOrderValue">
+                        R0
+                    </h3>
+
+
+                    <p class="stat-description">
+                        Average revenue per order
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 MAIN ANALYTICS
+            =================================== -->
+
+            <section class="analytics-main-grid">
+
+
+                <!-- ==============================
+                     REVENUE CHART
+                =============================== -->
+
+                <article class="dashboard-card analytics-revenue-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Revenue Overview
+                            </h3>
+
+                            <p>
+                                Revenue performance over time
+                            </p>
+
+                        </div>
+
+
+                        <div class="analytics-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="chartRevenueTotal">
+                                R0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Chart -->
+
+                    <div
+                        class="analytics-chart"
+                        id="analyticsRevenueChart"
+                    >
+
+                        <!-- Generated with JavaScript -->
+
+                    </div>
+
+
+                    <!-- Labels -->
+
+                    <div
+                        class="analytics-chart-labels"
+                        id="analyticsChartLabels"
+                    >
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     ORDER STATUS
+                =============================== -->
+
+                <article class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Order Status
+                            </h3>
+
+                            <p>
+                                Current order distribution
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-status-analytics">
+
+
+                        <div class="analytics-status-item">
+
+                            <div class="analytics-status-top">
+
+                                <span>
+                                    Pending
+                                </span>
+
+                                <strong id="analyticsPending">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="analytics-progress">
+
+                                <div
+                                    class="analytics-progress-bar pending"
+                                    id="pendingProgress"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-status-item">
+
+                            <div class="analytics-status-top">
+
+                                <span>
+                                    Processing
+                                </span>
+
+                                <strong id="analyticsProcessing">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="analytics-progress">
+
+                                <div
+                                    class="analytics-progress-bar processing"
+                                    id="processingProgress"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-status-item">
+
+                            <div class="analytics-status-top">
+
+                                <span>
+                                    Completed
+                                </span>
+
+                                <strong id="analyticsCompleted">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="analytics-progress">
+
+                                <div
+                                    class="analytics-progress-bar completed"
+                                    id="completedProgress"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-status-item">
+
+                            <div class="analytics-status-top">
+
+                                <span>
+                                    Cancelled
+                                </span>
+
+                                <strong id="analyticsCancelled">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="analytics-progress">
+
+                                <div
+                                    class="analytics-progress-bar cancelled"
+                                    id="cancelledProgress"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 SECOND ANALYTICS ROW
+            =================================== -->
+
+            <section class="analytics-secondary-grid">
+
+
+                <!-- ==============================
+                     SALES BY CATEGORY
+                =============================== -->
+
+                <article class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Sales by Category
+                            </h3>
+
+                            <p>
+                                Revenue contribution by category
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="analytics-category-list"
+                        id="analyticsCategoryList"
+                    >
+
+                        <!-- Generated with JS -->
+
+                    </div>
+
+                </article>
+
+
+                <!-- ==============================
+                     TOP PRODUCTS
+                =============================== -->
+
+                <article class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Top Products
+                            </h3>
+
+                            <p>
+                                Best-performing products
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="products.html"
+                            class="view-all-link"
+                        >
+                            View products
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="analytics-products-list"
+                        id="analyticsTopProducts"
+                    >
+
+                        <!-- Generated with JS -->
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 BUSINESS INSIGHTS
+            =================================== -->
+
+            <section class="analytics-insights-grid">
+
+
+                <!-- Conversion -->
+
+                <article class="dashboard-card insight-card">
+
+                    <div class="insight-icon">
+                        %
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Completion Rate
+                        </span>
+
+                        <strong id="completionRate">
+                            0%
+                        </strong>
+
+                        <p>
+                            Orders successfully completed
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Customer Value -->
+
+                <article class="dashboard-card insight-card">
+
+                    <div class="insight-icon">
+                        R
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Revenue Per Customer
+                        </span>
+
+                        <strong id="revenuePerCustomer">
+                            R0
+                        </strong>
+
+                        <p>
+                            Average customer value
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Products Sold -->
+
+                <article class="dashboard-card insight-card">
+
+                    <div class="insight-icon">
+                        □
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Products Sold
+                        </span>
+
+                        <strong id="productsSold">
+                            0
+                        </strong>
+
+                        <p>
+                            Total units purchased
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Refund Rate -->
+
+                <article class="dashboard-card insight-card">
+
+                    <div class="insight-icon">
+                        ↩
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Refund Rate
+                        </span>
+
+                        <strong id="refundRate">
+                            0%
+                        </strong>
+
+                        <p>
+                            Refunded or cancelled orders
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ==================================
+                 RECENT SALES
+            =================================== -->
+
+            <section class="dashboard-card analytics-sales-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Recent Sales
+                        </h3>
+
+                        <p>
+                            Latest revenue-generating orders
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="orders.html"
+                        class="view-all-link"
+                    >
+                        View all orders
+                    </a>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ORDER
+                                </th>
+
+                                <th>
+                                    CUSTOMER
+                                </th>
+
+                                <th>
+                                    DATE
+                                </th>
+
+                                <th>
+                                    ITEMS
+                                </th>
+
+                                <th>
+                                    AMOUNT
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="analyticsRecentSales">
+
+                            <!-- Generated with JS -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Empty State -->
+
+                <div
+                    class="products-empty-state"
+                    id="analyticsEmptyState"
+                    hidden
+                >
+
+                    <div>
+                        ◒
+                    </div>
+
+                    <h3>
+                        No analytics available
+                    </h3>
+
+                    <p>
+                        Order data will appear here once sales are available.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ==========================================
+     MOBILE SIDEBAR OVERLAY
+=========================================== -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="script.js"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>

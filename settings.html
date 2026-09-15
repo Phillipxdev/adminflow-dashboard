@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow account, store, notification and security settings."
+    >
+
+    <title>Settings | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+                <span class="logo-icon">A</span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+            </a>
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">MENU</p>
+
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a href="products.html" class="nav-link">
+                <span class="nav-icon">□</span>
+                <span>Products</span>
+            </a>
+
+
+            <a href="orders.html" class="nav-link">
+
+                <span class="nav-icon">🛒</span>
+
+                <span>Orders</span>
+
+                <span
+                    class="nav-badge"
+                    id="ordersBadge"
+                >
+                    12
+                </span>
+
+            </a>
+
+
+            <a href="customers.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a href="analytics.html" class="nav-link">
+                <span class="nav-icon">◒</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a
+                href="settings.html"
+                class="nav-link active"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+
+            <a href="help.html" class="nav-link">
+
+                <span class="nav-icon">?</span>
+
+                <span>Help Center</span>
+                
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Settings</h1>
+
+                    <p>
+                        Manage your account and dashboard preferences.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+                    ♢
+
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+                    <div class="profile-details">
+                        <strong>Thabiso</strong>
+                        <span>Admin</span>
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             SETTINGS CONTENT
+        ======================================= -->
+
+        <div class="dashboard-content">
+
+            <div class="products-page-heading">
+
+                <div>
+
+                    <h2>
+                        Account Settings
+                    </h2>
+
+                    <p>
+                        Configure your profile, business and dashboard preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-layout">
+
+                <!-- ===============================
+                     SETTINGS NAVIGATION
+                ================================ -->
+
+                <aside class="settings-navigation">
+
+                    <button
+                        class="settings-nav-btn active"
+                        data-settings-target="profileSettings"
+                    >
+                        <span>♙</span>
+                        Profile
+                    </button>
+
+
+                    <button
+                        class="settings-nav-btn"
+                        data-settings-target="businessSettings"
+                    >
+                        <span>□</span>
+                        Business
+                    </button>
+
+
+                    <button
+                        class="settings-nav-btn"
+                        data-settings-target="notificationSettings"
+                    >
+                        <span>♢</span>
+                        Notifications
+                    </button>
+
+
+                    <button
+                        class="settings-nav-btn"
+                        data-settings-target="appearanceSettings"
+                    >
+                        <span>◐</span>
+                        Appearance
+                    </button>
+
+
+                    <button
+                        class="settings-nav-btn"
+                        data-settings-target="securitySettings"
+                    >
+                        <span>◇</span>
+                        Security
+                    </button>
+
+
+                    <button
+                        class="settings-nav-btn danger-tab"
+                        data-settings-target="dataSettings"
+                    >
+                        <span>!</span>
+                        Data
+                    </button>
+
+                </aside>
+
+
+                <!-- ===============================
+                     SETTINGS PANELS
+                ================================ -->
+
+                <div class="settings-panels">
+
+
+                    <!-- ===========================
+                         PROFILE
+                    ============================ -->
+
+                    <section
+                        class="dashboard-card settings-panel active"
+                        id="profileSettings"
+                    >
+
+                        <div class="settings-panel-header">
+
+                            <div>
+                                <h3>Profile Information</h3>
+
+                                <p>
+                                    Update your administrator profile.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <form id="profileSettingsForm">
+
+                            <div class="settings-profile">
+
+                                <div
+                                    class="settings-avatar"
+                                    id="settingsAvatar"
+                                >
+                                    TS
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        Profile Picture
+                                    </strong>
+
+                                    <p>
+                                        Your initials are generated from your name.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="settingsFirstName">
+                                        First Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="settingsFirstName"
+                                        value="Thabiso"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="settingsLastName">
+                                        Last Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="settingsLastName"
+                                        value="Shezi"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="settingsEmail">
+                                    Email Address
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="settingsEmail"
+                                    placeholder="admin@example.com"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="settingsPhone">
+                                    Phone Number
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="settingsPhone"
+                                    placeholder="+27"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="settingsRole">
+                                    Role
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="settingsRole"
+                                    value="Administrator"
+                                    disabled
+                                >
+
+                            </div>
+
+
+                            <div class="settings-save-row">
+
+                                <button
+                                    type="submit"
+                                    class="save-product-btn"
+                                >
+                                    Save Profile
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- ===========================
+                         BUSINESS
+                    ============================ -->
+
+                    <section
+                        class="dashboard-card settings-panel"
+                        id="businessSettings"
+                    >
+
+                        <div class="settings-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Business Settings
+                                </h3>
+
+                                <p>
+                                    Configure your store information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <form id="businessSettingsForm">
+
+                            <div class="form-group">
+
+                                <label for="businessName">
+                                    Business Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="businessName"
+                                    value="AdminFlow Store"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="businessCurrency">
+                                        Currency
+                                    </label>
+
+                                    <select id="businessCurrency">
+
+                                        <option value="ZAR" selected>
+                                            ZAR — South African Rand
+                                        </option>
+
+                                        <option value="USD">
+                                            USD — US Dollar
+                                        </option>
+
+                                        <option value="GBP">
+                                            GBP — British Pound
+                                        </option>
+
+                                        <option value="EUR">
+                                            EUR — Euro
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="businessTimezone">
+                                        Time Zone
+                                    </label>
+
+                                    <select id="businessTimezone">
+
+                                        <option
+                                            value="Africa/Johannesburg"
+                                            selected
+                                        >
+                                            South Africa (GMT+2)
+                                        </option>
+
+                                        <option value="UTC">
+                                            UTC
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="businessLocation">
+                                    Business Location
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="businessLocation"
+                                    value="Durban, KwaZulu-Natal"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="businessDescription">
+                                    Business Description
+                                </label>
+
+                                <textarea
+                                    id="businessDescription"
+                                    rows="4"
+                                    placeholder="Describe your business..."
+                                ></textarea>
+
+                            </div>
+
+
+                            <div class="settings-save-row">
+
+                                <button
+                                    type="submit"
+                                    class="save-product-btn"
+                                >
+                                    Save Business Settings
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- ===========================
+                         NOTIFICATIONS
+                    ============================ -->
+
+                    <section
+                        class="dashboard-card settings-panel"
+                        id="notificationSettings"
+                    >
+
+                        <div class="settings-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Notifications
+                                </h3>
+
+                                <p>
+                                    Choose which dashboard alerts you receive.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-toggle-list">
+
+
+                            <div class="settings-toggle-item">
+
+                                <div>
+
+                                    <strong>
+                                        New Orders
+                                    </strong>
+
+                                    <p>
+                                        Receive notifications when a new order is placed.
+                                    </p>
+
+                                </div>
+
+
+                                <label class="switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="notifyOrders"
+                                        checked
+                                    >
+
+                                    <span class="switch-slider"></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="settings-toggle-item">
+
+                                <div>
+
+                                    <strong>
+                                        Low Stock
+                                    </strong>
+
+                                    <p>
+                                        Alert when product inventory becomes low.
+                                    </p>
+
+                                </div>
+
+
+                                <label class="switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="notifyStock"
+                                        checked
+                                    >
+
+                                    <span class="switch-slider"></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="settings-toggle-item">
+
+                                <div>
+
+                                    <strong>
+                                        New Customers
+                                    </strong>
+
+                                    <p>
+                                        Receive an alert when a new customer joins.
+                                    </p>
+
+                                </div>
+
+
+                                <label class="switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="notifyCustomers"
+                                    >
+
+                                    <span class="switch-slider"></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="settings-toggle-item">
+
+                                <div>
+
+                                    <strong>
+                                        Analytics Reports
+                                    </strong>
+
+                                    <p>
+                                        Receive performance and sales summaries.
+                                    </p>
+
+                                </div>
+
+
+                                <label class="switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="notifyAnalytics"
+                                        checked
+                                    >
+
+                                    <span class="switch-slider"></span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-save-row">
+
+                            <button
+                                class="save-product-btn"
+                                id="saveNotificationSettings"
+                            >
+                                Save Notifications
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ===========================
+                         APPEARANCE
+                    ============================ -->
+
+                    <section
+                        class="dashboard-card settings-panel"
+                        id="appearanceSettings"
+                    >
+
+                        <div class="settings-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Appearance
+                                </h3>
+
+                                <p>
+                                    Personalize your dashboard appearance.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="appearance-options">
+
+                            <button
+                                class="appearance-card"
+                                data-theme-setting="light"
+                            >
+
+                                <div class="appearance-preview light-preview">
+
+                                    <div></div>
+
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+                                <strong>
+                                    Light
+                                </strong>
+
+                                <span>
+                                    Bright dashboard
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="appearance-card"
+                                data-theme-setting="dark"
+                            >
+
+                                <div class="appearance-preview dark-preview">
+
+                                    <div></div>
+
+                                    <div>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+                                <strong>
+                                    Dark
+                                </strong>
+
+                                <span>
+                                    Dark dashboard
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ===========================
+                         SECURITY
+                    ============================ -->
+
+                    <section
+                        class="dashboard-card settings-panel"
+                        id="securitySettings"
+                    >
+
+                        <div class="settings-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Security
+                                </h3>
+
+                                <p>
+                                    Manage your administrator password.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <form id="securitySettingsForm">
+
+                            <div class="form-group">
+
+                                <label for="currentPassword">
+                                    Current Password
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="currentPassword"
+                                    autocomplete="current-password"
+                                >
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="newPassword">
+                                        New Password
+                                    </label>
+
+                                    <input
+                                        type="password"
+                                        id="newPassword"
+                                        minlength="8"
+                                        autocomplete="new-password"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="confirmPassword">
+                                        Confirm Password
+                                    </label>
+
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        minlength="8"
+                                        autocomplete="new-password"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="security-note">
+
+                                <span>i</span>
+
+                                <p>
+                                    This is a front-end portfolio demo.
+                                    A production application should handle
+                                    passwords securely on a backend server.
+                                </p>
+
+                            </div>
+
+
+                            <div class="settings-save-row">
+
+                                <button
+                                    type="submit"
+                                    class="save-product-btn"
+                                >
+                                    Update Password
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- ===========================
+                         DATA
+                    ============================ -->
+
+                    <section
+                        class="dashboard-card settings-panel"
+                        id="dataSettings"
+                    >
+
+                        <div class="settings-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Data Management
+                                </h3>
+
+                                <p>
+                                    Manage locally stored AdminFlow demo data.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="data-management-card">
+
+                            <div>
+
+                                <strong>
+                                    Export Dashboard Data
+                                </strong>
+
+                                <p>
+                                    Export your products, orders, customers
+                                    and settings as a JSON backup.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="settings-secondary-btn"
+                                id="exportDashboardData"
+                            >
+                                Export Data
+                            </button>
+
+                        </div>
+
+
+                        <div class="data-management-card danger-zone">
+
+                            <div>
+
+                                <strong>
+                                    Reset Demo Data
+                                </strong>
+
+                                <p>
+                                    Remove products, orders and customers
+                                    stored in this browser.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="settings-danger-btn"
+                                id="resetDashboardData"
+                            >
+                                Reset Data
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- Mobile Sidebar Overlay -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="script.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>

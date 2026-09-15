@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow Help Center - Find answers, documentation and support for managing your dashboard."
+    >
+
+    <title>Help Center | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    A
+                </span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+
+            <a
+                href="index.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">□</span>
+                <span>Products</span>
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="nav-link"
+            >
+
+                <span class="nav-icon">
+                    🛒
+                </span>
+
+                <span>
+                    Orders
+                </span>
+
+                <span
+                    class="nav-badge"
+                    id="ordersBadge"
+                >
+                    12
+                </span>
+
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">♙</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="analytics.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">◒</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+
+            <a
+                href="help.html"
+                class="nav-link active"
+            >
+                <span class="nav-icon">?</span>
+                <span>Help Center</span>
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR USER -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Help Center
+                    </h1>
+
+                    <p>
+                        Find answers and learn how to use AdminFlow.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+                    ♢
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             HELP CONTENT
+        ======================================= -->
+
+        <div class="dashboard-content help-page">
+
+
+            <!-- ==================================
+                 HERO
+            =================================== -->
+
+            <section class="help-hero">
+
+                <div class="help-hero-content">
+
+                    <span class="help-badge">
+                        ADMINFLOW SUPPORT
+                    </span>
+
+
+                    <h2>
+                        How can we help you?
+                    </h2>
+
+
+                    <p>
+                        Search our help center or browse the
+                        topics below to learn how to manage
+                        your AdminFlow dashboard.
+                    </p>
+
+
+                    <div class="help-search">
+
+                        <span class="help-search-icon">
+                            ⌕
+                        </span>
+
+
+                        <input
+                            type="search"
+                            id="helpSearch"
+                            placeholder="Search for help..."
+                            aria-label="Search help articles"
+                        >
+
+
+                        <span class="help-search-shortcut">
+                            /
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 QUICK HELP
+            =================================== -->
+
+            <section class="help-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Browse by topic
+                        </h2>
+
+                        <p>
+                            Explore common AdminFlow features.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="help-topic-grid">
+
+
+                    <!-- PRODUCT -->
+
+                    <button
+                        class="help-topic-card"
+                        data-help-topic="products"
+                    >
+
+                        <div class="help-topic-icon">
+                            □
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Products
+                            </h3>
+
+                            <p>
+                                Learn how to add, edit,
+                                delete and manage inventory.
+                            </p>
+
+                        </div>
+
+
+                        <span class="help-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- ORDERS -->
+
+                    <button
+                        class="help-topic-card"
+                        data-help-topic="orders"
+                    >
+
+                        <div class="help-topic-icon">
+                            🛒
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Orders
+                            </h3>
+
+                            <p>
+                                Manage customer orders,
+                                statuses and payments.
+                            </p>
+
+                        </div>
+
+
+                        <span class="help-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- CUSTOMERS -->
+
+                    <button
+                        class="help-topic-card"
+                        data-help-topic="customers"
+                    >
+
+                        <div class="help-topic-icon">
+                            ♙
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Customers
+                            </h3>
+
+                            <p>
+                                View customer profiles,
+                                spending and order history.
+                            </p>
+
+                        </div>
+
+
+                        <span class="help-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- ANALYTICS -->
+
+                    <button
+                        class="help-topic-card"
+                        data-help-topic="analytics"
+                    >
+
+                        <div class="help-topic-icon">
+                            ◒
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Analytics
+                            </h3>
+
+                            <p>
+                                Understand revenue, sales
+                                and business performance.
+                            </p>
+
+                        </div>
+
+
+                        <span class="help-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- SETTINGS -->
+
+                    <button
+                        class="help-topic-card"
+                        data-help-topic="settings"
+                    >
+
+                        <div class="help-topic-icon">
+                            ⚙
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Settings
+                            </h3>
+
+                            <p>
+                                Manage your profile,
+                                preferences and dashboard.
+                            </p>
+
+                        </div>
+
+
+                        <span class="help-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- SECURITY -->
+
+                    <button
+                        class="help-topic-card"
+                        data-help-topic="security"
+                    >
+
+                        <div class="help-topic-icon">
+                            ◇
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Security
+                            </h3>
+
+                            <p>
+                                Learn about account security
+                                and password management.
+                            </p>
+
+                        </div>
+
+
+                        <span class="help-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 FAQ
+            =================================== -->
+
+            <section
+                class="dashboard-card help-faq-card"
+                id="faqSection"
+            >
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Frequently Asked Questions
+                        </h3>
+
+                        <p>
+                            Quick answers to common questions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="faq-list"
+                    id="faqList"
+                >
+
+
+                    <!-- FAQ 1 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="products inventory add product"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                How do I add a new product?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Open the Products page and click
+                                    <strong>Add Product</strong>.
+                                    Enter the product name, SKU,
+                                    category, price and stock quantity,
+                                    then save the product.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 2 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="orders status processing completed cancelled"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                How do I update an order status?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Go to the Orders page, select
+                                    <strong>View</strong> on an order,
+                                    choose a new status and click
+                                    <strong>Update Status</strong>.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 3 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="customers customer spending history"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                Where can I see customer order history?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Open Customers and click
+                                    <strong>View</strong> next to a customer.
+                                    Their profile shows contact information,
+                                    total spending and recent orders.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 4 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="analytics revenue sales chart reports"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                How does the Analytics page work?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Analytics reads your locally stored
+                                    order and product data to calculate
+                                    revenue, order performance, top products,
+                                    category sales and other business metrics.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 5 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="dark mode theme appearance light"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                How do I enable dark mode?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Click the theme button in the top
+                                    navigation or open Settings →
+                                    Appearance and select Dark.
+                                    AdminFlow remembers your preference
+                                    using localStorage.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 6 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="export backup data json"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                Can I export my dashboard data?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Yes. Open Settings → Data and choose
+                                    <strong>Export Data</strong>.
+                                    AdminFlow creates a JSON backup
+                                    containing your products, orders,
+                                    customers and dashboard settings.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 7 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="reset delete demo localstorage data"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                What happens when I reset demo data?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    Resetting demo data removes locally
+                                    stored products, orders and customers.
+                                    Your profile and theme preference remain
+                                    unchanged.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FAQ 8 -->
+
+                    <article
+                        class="faq-item"
+                        data-help-category="password security authentication backend"
+                    >
+
+                        <button
+                            class="faq-question"
+                            aria-expanded="false"
+                        >
+
+                            <span>
+                                Does AdminFlow store passwords?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <div>
+
+                                <p>
+                                    No. This version of AdminFlow is a
+                                    front-end portfolio project. The password
+                                    interface demonstrates validation only.
+                                    A production application should use
+                                    secure backend authentication.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- NO RESULTS -->
+
+                <div
+                    class="help-no-results"
+                    id="helpNoResults"
+                    hidden
+                >
+
+                    <div class="help-no-results-icon">
+                        ?
+                    </div>
+
+                    <h3>
+                        No results found
+                    </h3>
+
+                    <p>
+                        Try searching for products, orders,
+                        customers, analytics or settings.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 GETTING STARTED
+            =================================== -->
+
+            <section class="help-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Getting Started
+                        </h2>
+
+                        <p>
+                            Learn the AdminFlow workflow.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="help-steps">
+
+
+                    <div class="help-step">
+
+                        <span class="help-step-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Add your products
+                            </h3>
+
+                            <p>
+                                Create products and configure
+                                prices, categories and inventory.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="help-step">
+
+                        <span class="help-step-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Manage orders
+                            </h3>
+
+                            <p>
+                                Track purchases and update
+                                order fulfilment statuses.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="help-step">
+
+                        <span class="help-step-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Understand customers
+                            </h3>
+
+                            <p>
+                                Review customer activity,
+                                spending and order history.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="help-step">
+
+                        <span class="help-step-number">
+                            04
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Analyse performance
+                            </h3>
+
+                            <p>
+                                Use Analytics to understand
+                                sales and revenue trends.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 SUPPORT
+            =================================== -->
+
+            <section class="help-support-card">
+
+                <div class="help-support-content">
+
+                    <div class="help-support-icon">
+                        ?
+                    </div>
+
+
+                    <div>
+
+                        <span class="help-support-label">
+                            NEED MORE HELP?
+                        </span>
+
+                        <h2>
+                            Still have a question?
+                        </h2>
+
+                        <p>
+                            Send a support message and our
+                            team will help you resolve your issue.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="help-contact-btn"
+                    id="contactSupportBtn"
+                >
+                    Contact Support
+                    <span>→</span>
+                </button>
+
+            </section>
+
+
+            <!-- ==================================
+                 SUPPORT MODAL
+            =================================== -->
+
+            <div
+                class="product-modal-overlay"
+                id="supportModal"
+                aria-hidden="true"
+            >
+
+                <div
+                    class="product-modal help-support-modal"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="supportModalTitle"
+                >
+
+                    <div class="product-modal-header">
+
+                        <div>
+
+                            <h2 id="supportModalTitle">
+                                Contact Support
+                            </h2>
+
+                            <p>
+                                Tell us how we can help.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="modal-close"
+                            id="closeSupportModal"
+                            aria-label="Close support form"
+                        >
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <form id="supportForm">
+
+                        <div class="form-group">
+
+                            <label for="supportName">
+                                Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="supportName"
+                                placeholder="Your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supportEmail">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="supportEmail"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supportTopic">
+                                Topic
+                            </label>
+
+                            <select
+                                id="supportTopic"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a topic
+                                </option>
+
+                                <option value="Products">
+                                    Products
+                                </option>
+
+                                <option value="Orders">
+                                    Orders
+                                </option>
+
+                                <option value="Customers">
+                                    Customers
+                                </option>
+
+                                <option value="Analytics">
+                                    Analytics
+                                </option>
+
+                                <option value="Settings">
+                                    Settings
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supportMessage">
+                                Message
+                            </label>
+
+                            <textarea
+                                id="supportMessage"
+                                rows="5"
+                                placeholder="Describe your issue..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="modal-actions">
+
+                            <button
+                                type="button"
+                                class="cancel-product-btn"
+                                id="cancelSupportModal"
+                            >
+                                Cancel
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="save-product-btn"
+                            >
+                                Send Message
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- MOBILE OVERLAY -->
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="script.js"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>
