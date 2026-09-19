@@ -135,7 +135,11 @@
         <div class="sidebar-user">
 
             <div class="user-avatar">
-                TS
+                <img
+                    src="profile.jpg"
+                    alt="Thabiso Shezi"
+                    class="admin-profile-image"
+                >
             </div>
 
             <div class="user-info">
@@ -242,7 +246,11 @@
                 <button class="profile-button">
 
                     <div class="profile-avatar">
-                        TS
+                        <img
+                            src="profile.jpg"
+                            alt="Thabiso Shezi"
+                            class="admin-profile-image"
+                        >
                     </div>
 
                     <div class="profile-details">
@@ -292,14 +300,21 @@
                 </div>
 
 
-                <button
-                    class="add-product-btn"
-                    id="addProductBtn"
-                >
-                    <span>+</span>
+                <div class="products-page-actions">
 
-                    Add Product
-                </button>
+                    <a href="index.html" class="back-dashboard-btn">
+                        ← Back to Dashboard
+                    </a>
+
+                    <button
+                        class="add-product-btn"
+                        id="addProductBtn"
+                    >
+                        <span>+</span>
+                        Add Product
+                    </button>
+
+               </div>
 
             </div>
 
@@ -1320,6 +1335,11 @@
 
 </div>
 
+<!-- PRODUCT CLICK LOADER -->
+<div class="product-click-loader" id="productClickLoader">
+    <div class="product-loader-spinner"></div>
+    <p>Loading product...</p>
+</div>
 
 <script src="script.js"></script>
 

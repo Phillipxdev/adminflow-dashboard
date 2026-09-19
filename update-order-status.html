@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Update customer order status in AdminFlow."
+    >
+
+    <title>Update Order Status | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==========================================
+           UPDATE ORDER STATUS PAGE
+        ========================================== */
+
+        .update-status-page {
+            max-width: 900px;
+        }
+
+        .update-status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .update-status-header h2 {
+            margin: 0 0 6px;
+            font-size: 24px;
+        }
+
+        .update-status-header p {
+            margin: 0;
+            color: var(--text-secondary, #64748b);
+            font-size: 14px;
+        }
+
+        .status-card {
+            background: var(--card-bg, #ffffff);
+            border: 1px solid var(--border-color, #e2e8f0);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .status-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 24px;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .status-card-header h3 {
+            margin: 0 0 5px;
+            font-size: 17px;
+        }
+
+        .status-card-header p {
+            margin: 0;
+            color: var(--text-secondary, #64748b);
+            font-size: 13px;
+        }
+
+        .current-status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .current-status.pending {
+            background: rgba(245, 158, 11, 0.12);
+            color: #d97706;
+        }
+
+        .current-status.processing {
+            background: rgba(59, 130, 246, 0.12);
+            color: #2563eb;
+        }
+
+        .current-status.shipped {
+            background: rgba(139, 92, 246, 0.12);
+            color: #7c3aed;
+        }
+
+        .current-status.completed {
+            background: rgba(34, 197, 94, 0.12);
+            color: #16a34a;
+        }
+
+        .current-status.cancelled {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+        }
+
+        .order-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .summary-item {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .summary-item:nth-child(odd) {
+            border-right: 1px solid var(--border-color, #e2e8f0);
+        }
+
+        .summary-item span {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-secondary, #64748b);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .summary-item strong {
+            font-size: 14px;
+            color: var(--text-primary, #1e293b);
+        }
+
+        .status-form {
+            padding: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary, #1e293b);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border-color, #dbe2ea);
+            border-radius: 10px;
+            outline: none;
+            background: var(--card-bg, #ffffff);
+            color: var(--text-primary, #1e293b);
+            font-family: inherit;
+            font-size: 14px;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary, #4f46e5);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            display: block;
+            margin-top: 7px;
+            color: var(--text-secondary, #64748b);
+            font-size: 12px;
+        }
+
+        .status-form-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+            padding-top: 5px;
+        }
+
+        .cancel-status-btn,
+        .save-status-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 10px 17px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cancel-status-btn {
+            border: 1px solid var(--border-color, #e2e8f0);
+            background: var(--card-bg, #ffffff);
+            color: var(--text-primary, #334155);
+        }
+
+        .save-status-btn {
+            border: 1px solid var(--primary, #4f46e5);
+            background: var(--primary, #4f46e5);
+            color: #ffffff;
+        }
+
+        .save-status-btn:hover {
+            opacity: 0.9;
+        }
+
+        .status-success {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 13px 16px;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 10px;
+            background: rgba(34, 197, 94, 0.08);
+            color: #16a34a;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .status-success.show {
+            display: flex;
+        }
+
+        @media (max-width: 700px) {
+
+            .update-status-header {
+                flex-direction: column;
+            }
+
+            .order-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-item:nth-child(odd) {
+                border-right: none;
+            }
+
+            .status-form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .cancel-status-btn,
+            .save-status-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    A
+                </span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="products.html" class="nav-link">
+                <span class="nav-icon">□</span>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html" class="nav-link active">
+                <span class="nav-icon">🛒</span>
+                <span>Orders</span>
+                <span class="nav-badge">12</span>
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                <span>Customers</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                <span class="nav-icon">◒</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+            <a href="settings.html" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <a href="help.html" class="nav-link">
+                <span class="nav-icon">?</span>
+                <span>Help Center</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                TS
+            </div>
+
+            <div class="user-info">
+                <strong>Thabiso Shezi</strong>
+                <span>Administrator</span>
+            </div>
+
+            <button
+                class="logout-btn"
+                title="Logout"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Update Order</h1>
+                    <p>Manage customer order status.</p>
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+                <button
+                    class="header-btn"
+                    aria-label="Notifications"
+                >
+                    🔔
+                </button>
+
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        TS
+                    </div>
+
+                    <div class="profile-details">
+                        <strong>Thabiso</strong>
+                        <span>Admin</span>
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <div class="dashboard-content">
+
+            <div class="update-status-page">
+
+                <!-- PAGE HEADING -->
+
+                <div class="update-status-header">
+
+                    <div>
+                        <h2>Update Order Status</h2>
+
+                        <p>
+                            Change the current status of this customer order.
+                        </p>
+                    </div>
+
+                    <a
+                        href="orders.html"
+                        class="back-dashboard-btn"
+                    >
+                        ← Back to Orders
+                    </a>
+
+                </div>
+
+
+                <!-- SUCCESS MESSAGE -->
+
+                <div
+                    class="status-success"
+                    id="statusSuccess"
+                    role="status"
+                >
+                    ✓ Order status updated successfully.
+                </div>
+
+
+                <!-- ORDER CARD -->
+
+                <section class="status-card">
+
+                    <div class="status-card-header">
+
+                        <div>
+                            <h3 id="orderNumber">
+                                #ORD-1024
+                            </h3>
+
+                            <p>
+                                Order information
+                            </p>
+                        </div>
+
+                        <span
+                            class="current-status completed"
+                            id="currentStatus"
+                        >
+                            Completed
+                        </span>
+
+                    </div>
+
+
+                    <!-- ORDER INFORMATION -->
+
+                    <div class="order-summary">
+
+                        <div class="summary-item">
+                            <span>Customer</span>
+                            <strong id="customerName">
+                                Nomsa Mthembu
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Product</span>
+                            <strong id="productName">
+                                Wireless Headphones
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Amount</span>
+                            <strong id="orderAmount">
+                                R1,299
+                            </strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span>Order Date</span>
+                            <strong id="orderDate">
+                                15 Sep 2026
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS FORM -->
+
+                    <form
+                        class="status-form"
+                        id="statusForm"
+                    >
+
+                        <div class="form-group">
+
+                            <label for="orderStatus">
+                                Order Status
+                            </label>
+
+                            <select
+                                id="orderStatus"
+                                name="orderStatus"
+                                required
+                            >
+                                <option value="pending">
+                                    Pending
+                                </option>
+
+                                <option value="processing">
+                                    Processing
+                                </option>
+
+                                <option value="shipped">
+                                    Shipped
+                                </option>
+
+                                <option value="completed">
+                                    Completed
+                                </option>
+
+                                <option value="cancelled">
+                                    Cancelled
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="statusNote">
+                                Status Note
+                            </label>
+
+                            <textarea
+                                id="statusNote"
+                                name="statusNote"
+                                placeholder="Add an optional note about this status update..."
+                            ></textarea>
+
+                            <span class="form-hint">
+                                This note can be used to record why the order status was changed.
+                            </span>
+
+                        </div>
+
+
+                        <div class="status-form-actions">
+
+                            <a
+                                href="orders.html"
+                                class="cancel-status-btn"
+                            >
+                                Cancel
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="save-status-btn"
+                            >
+                                Save Status
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="script.js"></script>
+
+<script>
+
+// ==========================================
+// ORDER DATA
+// ==========================================
+
+const orders = {
+
+    "ORD-1024": {
+        customer: "Nomsa Mthembu",
+        product: "Wireless Headphones",
+        amount: "R1,299",
+        date: "15 Sep 2026",
+        status: "completed"
+    },
+
+    "ORD-1023": {
+        customer: "Sipho Khumalo",
+        product: "Smart Watch",
+        amount: "R2,499",
+        date: "15 Sep 2026",
+        status: "pending"
+    },
+
+    "ORD-1022": {
+        customer: "Zanele Dlamini",
+        product: "Running Shoes",
+        amount: "R1,899",
+        date: "14 Sep 2026",
+        status: "processing"
+    },
+
+    "ORD-1021": {
+        customer: "Lwazi Mkhize",
+        product: "Classic Backpack",
+        amount: "R899",
+        date: "14 Sep 2026",
+        status: "cancelled"
+    }
+
+};
+
+
+// ==========================================
+// GET ORDER FROM URL
+// ==========================================
+
+const params = new URLSearchParams(
+    window.location.search
+);
+
+const orderId =
+    params.get("id") || "ORD-1024";
+
+const order =
+    orders[orderId];
+
+
+// ==========================================
+// ELEMENTS
+// ==========================================
+
+const orderNumber =
+    document.getElementById("orderNumber");
+
+const customerName =
+    document.getElementById("customerName");
+
+const productName =
+    document.getElementById("productName");
+
+const orderAmount =
+    document.getElementById("orderAmount");
+
+const orderDate =
+    document.getElementById("orderDate");
+
+const currentStatus =
+    document.getElementById("currentStatus");
+
+const orderStatus =
+    document.getElementById("orderStatus");
+
+const statusForm =
+    document.getElementById("statusForm");
+
+const statusSuccess =
+    document.getElementById("statusSuccess");
+
+
+// ==========================================
+// DISPLAY ORDER
+// ==========================================
+
+if (order) {
+
+    orderNumber.textContent =
+        `#${orderId}`;
+
+    customerName.textContent =
+        order.customer;
+
+    productName.textContent =
+        order.product;
+
+    orderAmount.textContent =
+        order.amount;
+
+    orderDate.textContent =
+        order.date;
+
+    orderStatus.value =
+        order.status;
+
+    updateStatusBadge(
+        order.status
+    );
+
+} else {
+
+    orderNumber.textContent =
+        "Order not found";
+
+    statusForm.style.display =
+        "none";
+
+}
+
+
+// ==========================================
+// STATUS BADGE
+// ==========================================
+
+function updateStatusBadge(status) {
+
+    const statusText =
+        status.charAt(0).toUpperCase() +
+        status.slice(1);
+
+    currentStatus.textContent =
+        statusText;
+
+    currentStatus.className =
+        `current-status ${status}`;
+
+}
+
+
+// ==========================================
+// SAVE STATUS
+// ==========================================
+
+statusForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+        if (!order) return;
+
+        const newStatus =
+            orderStatus.value;
+
+        const note =
+            document
+                .getElementById("statusNote")
+                .value
+                .trim();
+
+        order.status =
+            newStatus;
+
+        updateStatusBadge(
+            newStatus
+        );
+
+
+        // Save status locally
+        localStorage.setItem(
+            `order-status-${orderId}`,
+            newStatus
+        );
+
+        if (note) {
+
+            localStorage.setItem(
+                `order-note-${orderId}`,
+                note
+            );
+
+        }
+
+
+        // Success message
+        statusSuccess.classList.add(
+            "show"
+        );
+
+        setTimeout(() => {
+
+            statusSuccess.classList.remove(
+                "show"
+            );
+
+        }, 3000);
+
+    }
+);
+
+
+// ==========================================
+// LOAD SAVED STATUS
+// ==========================================
+
+if (order) {
+
+    const savedStatus =
+        localStorage.getItem(
+            `order-status-${orderId}`
+        );
+
+    const savedNote =
+        localStorage.getItem(
+            `order-note-${orderId}`
+        );
+
+    if (savedStatus) {
+
+        order.status =
+            savedStatus;
+
+        orderStatus.value =
+            savedStatus;
+
+        updateStatusBadge(
+            savedStatus
+        );
+
+    }
+
+    if (savedNote) {
+
+        document
+            .getElementById("statusNote")
+            .value = savedNote;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

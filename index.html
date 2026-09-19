@@ -125,21 +125,21 @@
 
         </nav>
 
-
         <!-- User -->
 
         <div class="sidebar-user">
 
             <div class="user-avatar">
-                TS
+                <img
+                    src="profile.jpg"
+                    alt="Thabiso Shezi"
+                    class="admin-profile-image"
+                >
             </div>
 
             <div class="user-info">
-
                 <strong>Thabiso Shezi</strong>
-
                 <span>Administrator</span>
-
             </div>
 
             <button
@@ -227,17 +227,78 @@
 
                 <!-- Notification -->
 
+                <div class="notification-wrapper">
+
                 <button
                     class="header-btn notification-btn"
+                    id="notificationBtn"
                     aria-label="Notifications"
-                    title="Notifications"
+                    aria-expanded="false"
                 >
-
-                    ♢
-
-                    <span class="notification-dot"></span>
-
+                    🔔
+                    <span class="notification-dot" id="notificationDot"></span>
                 </button>
+
+                <div class="notification-dropdown" id="notificationDropdown">
+
+                    <div class="notification-header">
+                        <div>
+                            <h3>Notifications</h3>
+                            <span>3 unread</span>
+                        </div>
+
+                        <button id="markAllRead">
+                            Mark all as read
+                        </button>
+                    </div>
+
+                    <div class="notification-list">
+
+                        <div class="notification-item unread">
+                            <div class="notification-item-icon">
+                                🛒
+                            </div>
+
+                            <div class="notification-content">
+                                <strong>New order received</strong>
+                                <p>Order #ORD-1025 has been placed.</p>
+                                <span>5 minutes ago</span>
+                            </div>
+                        </div>
+
+                        <div class="notification-item unread">
+                            <div class="notification-item-icon">
+                                👤
+                            </div>
+
+                            <div class="notification-content">
+                                <strong>New customer</strong>
+                                <p>A new customer created an account.</p>
+                                <span>28 minutes ago</span>
+                            </div>
+                        </div>
+
+                        <div class="notification-item unread">
+                            <div class="notification-item-icon">
+                                ⚠
+                            </div>
+
+                            <div class="notification-content">
+                                <strong>Low stock</strong>
+                                <p>Classic Backpack is running low.</p>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="notifications.html" class="notification-footer">
+                        View all notifications →
+                    </a>
+
+                </div>
+
+             </div>
 
 
                 <!-- Profile -->
@@ -245,15 +306,16 @@
                 <button class="profile-button">
 
                     <div class="profile-avatar">
-                        TS
+                        <img
+                            src="profile.jpg"
+                            alt="Thabiso Shezi"
+                            class="admin-profile-image"
+                        >
                     </div>
 
                     <div class="profile-details">
-
                         <strong>Thabiso</strong>
-
                         <span>Admin</span>
-
                     </div>
 
                     <span class="profile-arrow">⌄</span>
@@ -479,9 +541,9 @@
                         </div>
 
 
-                        <button class="card-menu">
-                            •••
-                        </button>
+                        <a href="revenue.html" class="view-all">
+                            View details →
+                        </a>
 
                     </div>
 
@@ -626,9 +688,9 @@
 
                         </div>
 
-                        <button class="card-menu">
-                            •••
-                        </button>
+                        <a href="sales.html" class="view-all">
+                            View details →
+                        </a>
 
                     </div>
 
@@ -863,12 +925,36 @@
                             </td>
 
                             <td>
-                                <button class="table-action">
-                                    •••
-                                </button>
-                            </td>
+                                <div class="order-action-wrapper">
 
+                                    <button
+                                    class="table-action"
+                                    aria-label="Order actions"
+                                        aria-expanded="false"
+                                 >
+                                        •••
+                                </button>
+
+                                    <div class="order-action-menu">
+
+                                        <a href="orders.html">
+                                            View Order
+                                        </a>
+
+                                        <a href="update-order-status.html?id=ORD-1024">
+                                            Update Status
+                                        </a>
+
+                                        <a href="customers.html">
+                                            View Customer
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </td>
                         </tr>
+
 
 
                         <tr>
@@ -915,9 +1001,33 @@
 
                             <td>
 
-                                <button class="table-action">
+                                <div class="order-action-wrapper">
+
+                                <button
+                                    class="table-action"
+                                    aria-label="Order actions"
+                                    aria-expanded="false"
+                                >
                                     •••
                                 </button>
+
+                                <div class="order-action-menu">
+
+                                    <a href="orders.html">
+                                        View Order
+                                    </a>
+
+                                    <a href="update-order-status.html?id=ORD-1023">
+                                        Update Status
+                                    </a>
+
+                                    <a href="customers.html">
+                                        View Customer
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                             </td>
 
@@ -968,9 +1078,33 @@
 
                             <td>
 
-                                <button class="table-action">
-                                    •••
-                                </button>
+                                <div class="order-action-wrapper">
+
+                                    <button
+                                        class="table-action"
+                                        aria-label="Order actions"
+                                        aria-expanded="false"
+                                    >
+                                        •••
+                                    </button>
+
+                                    <div class="order-action-menu">
+
+                                        <a href="orders.html">
+                                            View Order
+                                        </a>
+
+                                        <a href="update-order-status.html?id=ORD-1022">
+                                            Update Status
+                                        </a>
+
+                                        <a href="customers.html">
+                                            View Customer
+                                        </a>
+
+                                    </div>
+
+                                </div>
 
                             </td>
 
@@ -1021,9 +1155,33 @@
 
                             <td>
 
-                                <button class="table-action">
-                                    •••
-                                </button>
+                                <div class="order-action-wrapper">
+
+                                        <button
+                                            class="table-action"
+                                            aria-label="Order actions"
+                                            aria-expanded="false"
+                                        >
+                                            •••
+                                        </button>
+
+                                        <div class="order-action-menu">
+
+                                            <a href="orders.html">
+                                                View Order
+                                            </a>
+
+                                            <a href="update-order-status.html?id=ORD-1021">
+                                                Update Status
+                                            </a>
+
+                                            <a href="customers.html">
+                                                View Customer
+                                            </a>
+
+                                        </div>
+
+                                    </div>
 
                             </td>
 

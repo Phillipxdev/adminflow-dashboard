@@ -115,8 +115,12 @@
 
         <div class="sidebar-user">
 
-            <div class="user-avatar">
-                TS
+           <div class="user-avatar">
+                <img
+                    src="profile.jpg"
+                    alt="Thabiso Shezi"
+                    class="admin-profile-image"
+                >
             </div>
 
             <div class="user-info">
@@ -229,7 +233,11 @@
                 <button class="profile-button">
 
                     <div class="profile-avatar">
-                        TS
+                        <img
+                            src="profile.jpg"
+                            alt="Thabiso Shezi"
+                            class="admin-profile-image"
+                        >
                     </div>
 
                     <div class="profile-details">
@@ -281,12 +289,20 @@
                 </div>
 
 
+                <div class="products-page-actions">
+
+                <a href="index.html" class="back-dashboard-btn">
+                    ← Back to Dashboard
+                </a>
+
                 <button
                     class="add-product-btn"
                     id="exportOrdersBtn"
                 >
                     ↓ Export Orders
                 </button>
+
+            </div>
 
             </div>
 
@@ -572,25 +588,25 @@
 </div>
 
 
-<!-- ==========================================
-     SIDEBAR OVERLAY
-=========================================== -->
+    <!-- ==========================================
+        SIDEBAR OVERLAY
+    =========================================== -->
 
-<div
-    class="sidebar-overlay"
-    id="sidebarOverlay"
-></div>
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
 
 
-<!-- ==========================================
-     ORDER DETAILS MODAL
-=========================================== -->
+    <!-- ==========================================
+        ORDER DETAILS MODAL
+    =========================================== -->
 
-<div
-    class="product-modal-overlay"
-    id="orderModal"
-    aria-hidden="true"
->
+        <div
+            class="product-modal-overlay"
+            id="orderModal"
+            aria-hidden="true"
+        >
 
     <div
         class="product-modal order-modal"

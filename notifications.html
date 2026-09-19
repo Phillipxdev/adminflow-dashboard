@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow notifications and recent activity."
+    >
+
+    <title>Notifications | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==========================================
+           NOTIFICATIONS PAGE
+        ========================================== */
+
+        .notifications-page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .notifications-page-header h2 {
+            margin: 0 0 6px;
+        }
+
+        .notifications-page-header p {
+            margin: 0;
+            color: var(--text-muted, #64748b);
+        }
+
+        .notification-page-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-dashboard,
+        .mark-read-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            padding: 11px 16px;
+
+            border-radius: 10px;
+            border: 1px solid var(--border-color, #e2e8f0);
+
+            font-size: 13px;
+            font-weight: 600;
+
+            text-decoration: none;
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .back-dashboard {
+            background: var(--card-bg, #fff);
+            color: var(--primary, #4f46e5);
+        }
+
+        .mark-read-btn {
+            border-color: var(--primary, #4f46e5);
+            background: var(--primary, #4f46e5);
+            color: #fff;
+        }
+
+        .back-dashboard:hover,
+        .mark-read-btn:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* ==========================================
+           STATS
+        ========================================== */
+
+        .notification-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .notification-stat-card {
+            padding: 22px;
+
+            background: var(--card-bg, #fff);
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 16px;
+        }
+
+        .notification-stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+        .notification-stat-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: rgba(79, 70, 229, 0.1);
+
+            font-size: 18px;
+        }
+
+        .notification-stat-card span {
+            color: var(--text-muted, #64748b);
+            font-size: 13px;
+        }
+
+        .notification-stat-card h3 {
+            margin: 7px 0 0;
+            font-size: 26px;
+        }
+
+
+        /* ==========================================
+           MAIN NOTIFICATION CARD
+        ========================================== */
+
+        .all-notifications-card {
+            background: var(--card-bg, #fff);
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+        }
+
+
+        /* Filters */
+
+        .notification-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 20px 22px;
+
+            border-bottom:
+                1px solid var(--border-color, #e2e8f0);
+        }
+
+        .notification-filters {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+        .notification-filter {
+            padding: 8px 14px;
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 20px;
+
+            background: transparent;
+            color: inherit;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .notification-filter:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+
+        .notification-filter.active {
+            background: var(--primary, #4f46e5);
+            border-color: var(--primary, #4f46e5);
+            color: #fff;
+        }
+
+        .notification-search {
+            padding: 9px 13px;
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 9px;
+
+            background: var(--card-bg, #fff);
+            color: inherit;
+
+            outline: none;
+        }
+
+
+        /* ==========================================
+           ITEMS
+        ========================================== */
+
+        .all-notification-item {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 15px;
+
+            padding: 20px 22px;
+
+            border-bottom:
+                1px solid var(--border-color, #e2e8f0);
+
+            transition: 0.2s ease;
+        }
+
+        .all-notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .all-notification-item:hover {
+            background: rgba(79, 70, 229, 0.04);
+        }
+
+        .all-notification-item.unread {
+            background: rgba(79, 70, 229, 0.055);
+        }
+
+
+        /* Icon */
+
+        .page-notification-icon {
+            width: 44px;
+            height: 44px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: rgba(79, 70, 229, 0.1);
+
+            font-size: 18px;
+        }
+
+
+        /* Content */
+
+        .page-notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .notification-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 5px;
+        }
+
+        .notification-title-row strong {
+            font-size: 14px;
+        }
+
+        .unread-indicator {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #4f46e5;
+        }
+
+        .page-notification-content p {
+            margin: 0 0 7px;
+
+            color: var(--text-muted, #64748b);
+
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .notification-time {
+            color: var(--text-muted, #94a3b8);
+            font-size: 11px;
+        }
+
+
+        /* Action */
+
+        .notification-more {
+            border: none;
+            background: transparent;
+
+            color: var(--text-muted, #64748b);
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+
+        /* ==========================================
+           EMPTY STATE
+        ========================================== */
+
+        .notification-empty {
+            display: none;
+
+            padding: 60px 20px;
+
+            text-align: center;
+        }
+
+        .notification-empty span {
+            display: block;
+
+            margin-bottom: 10px;
+
+            font-size: 35px;
+        }
+
+        .notification-empty h3 {
+            margin: 0 0 6px;
+        }
+
+        .notification-empty p {
+            margin: 0;
+            color: var(--text-muted, #64748b);
+        }
+
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            .notification-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .notifications-page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .notification-page-actions {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .notification-toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .notification-search {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .notification-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .all-notification-item {
+                padding: 17px 15px;
+            }
+
+            .page-notification-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard-layout">
+
+
+    <!-- ==========================================
+         SIDEBAR
+         No notification link added
+    ========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">A</span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+
+            <a href="index.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="products.html" class="nav-link">
+
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span>Products</span>
+
+            </a>
+
+
+            <a href="orders.html" class="nav-link">
+
+                <span class="nav-icon">
+                    🛒
+                </span>
+
+                <span>Orders</span>
+
+                <span class="nav-badge">
+                    12
+                </span>
+
+            </a>
+
+
+            <a href="customers.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ♙
+                </span>
+
+                <span>Customers</span>
+
+            </a>
+
+
+            <a href="analytics.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ◒
+                </span>
+
+                <span>Analytics</span>
+
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a href="settings.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <a href="help.html" class="nav-link">
+
+                <span class="nav-icon">
+                    ?
+                </span>
+
+                <span>Help Center</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                <img
+                    src="profile.jpg"
+                    alt="Thabiso Shezi"
+                    class="admin-profile-image"
+                >
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                title="Logout"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Notifications
+                    </h1>
+
+                    <p>
+                        Stay updated with your store activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        placeholder="Search..."
+                        aria-label="Search"
+                    >
+
+                </div>
+
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <button
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+                    🔔
+                </button>
+
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        <img
+                            src="profile.jpg"
+                            alt="Thabiso Shezi"
+                            class="admin-profile-image"
+                        >
+                    </div>
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             CONTENT
+        ========================================== -->
+
+        <div class="dashboard-content">
+
+
+            <!-- HEADING -->
+
+            <div class="notifications-page-header">
+
+                <div>
+
+                    <h2>
+                        All Notifications
+                    </h2>
+
+                    <p>
+                        View and manage your recent notifications.
+                    </p>
+
+                </div>
+
+
+                <div class="notification-page-actions">
+
+                    <a
+                        href="index.html"
+                        class="back-dashboard"
+                    >
+                        ← Dashboard
+                    </a>
+
+
+                    <button
+                        class="mark-read-btn"
+                        id="pageMarkAllRead"
+                    >
+                        ✓ Mark all as read
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ======================================
+                 STATS
+            ======================================= -->
+
+            <section class="notification-stats">
+
+
+                <article class="notification-stat-card">
+
+                    <div class="notification-stat-top">
+
+                        <span>
+                            Total Notifications
+                        </span>
+
+                        <div class="notification-stat-icon">
+                            🔔
+                        </div>
+
+                    </div>
+
+                    <h3 id="totalNotifications">
+                        7
+                    </h3>
+
+                </article>
+
+
+                <article class="notification-stat-card">
+
+                    <div class="notification-stat-top">
+
+                        <span>
+                            Unread
+                        </span>
+
+                        <div class="notification-stat-icon">
+                            ●
+                        </div>
+
+                    </div>
+
+                    <h3 id="unreadCount">
+                        3
+                    </h3>
+
+                </article>
+
+
+                <article class="notification-stat-card">
+
+                    <div class="notification-stat-top">
+
+                        <span>
+                            Today
+                        </span>
+
+                        <div class="notification-stat-icon">
+                            ◷
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        4
+                    </h3>
+
+                </article>
+
+            </section>
+
+
+            <!-- ======================================
+                 NOTIFICATIONS
+            ======================================= -->
+
+            <section class="all-notifications-card">
+
+
+                <!-- Toolbar -->
+
+                <div class="notification-toolbar">
+
+                    <div class="notification-filters">
+
+                        <button
+                            class="notification-filter active"
+                            data-filter="all"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            class="notification-filter"
+                            data-filter="unread"
+                        >
+                            Unread
+                        </button>
+
+                        <button
+                            class="notification-filter"
+                            data-filter="order"
+                        >
+                            Orders
+                        </button>
+
+                        <button
+                            class="notification-filter"
+                            data-filter="customer"
+                        >
+                            Customers
+                        </button>
+
+                        <button
+                            class="notification-filter"
+                            data-filter="stock"
+                        >
+                            Stock
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        type="search"
+                        class="notification-search"
+                        id="notificationSearch"
+                        placeholder="Search notifications..."
+                    >
+
+                </div>
+
+
+                <!-- LIST -->
+
+                <div id="allNotificationsList">
+
+
+                    <!-- 1 -->
+
+                    <div
+                        class="all-notification-item unread"
+                        data-type="order"
+                    >
+
+                        <div class="page-notification-icon">
+                            🛒
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    New order received
+                                </strong>
+
+                                <span
+                                    class="unread-indicator"
+                                ></span>
+
+                            </div>
+
+
+                            <p>
+                                Order #ORD-1025 has been
+                                placed successfully.
+                            </p>
+
+
+                            <span class="notification-time">
+                                5 minutes ago
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=ORD-1025"
+                            class="notification-more"
+                            aria-label="View notification details"
+                        >
+                             &gt;
+                        </a>
+
+                    </div>
+
+
+                    <!-- 2 -->
+
+                    <div
+                        class="all-notification-item unread"
+                        data-type="customer"
+                    >
+
+                        <div class="page-notification-icon">
+                            👤
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    New customer registered
+                                </strong>
+
+                                <span
+                                    class="unread-indicator"
+                                ></span>
+
+                            </div>
+
+
+                            <p>
+                                A new customer created
+                                an account.
+                            </p>
+
+
+                            <span class="notification-time">
+                                28 minutes ago
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=CUSTOMER-001"
+                            class="notification-more"
+                            aria-label="View notification details"
+                        >
+                             &gt;
+                        </a>
+
+                    </div>
+
+
+                    <!-- 3 -->
+
+                    <div
+                        class="all-notification-item unread"
+                        data-type="stock"
+                    >
+
+                        <div class="page-notification-icon">
+                            ⚠
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    Low stock warning
+                                </strong>
+
+                                <span
+                                    class="unread-indicator"
+                                ></span>
+
+                            </div>
+
+
+                            <p>
+                                Classic Backpack has only
+                                5 units remaining.
+                            </p>
+
+
+                            <span class="notification-time">
+                                2 hours ago
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=STOCK-001"
+                            class="notification-more"
+                            aria-label="View notification details"
+                        >
+                             &gt;
+                        </a>
+
+                    </div>
+
+
+                    <!-- 4 -->
+
+                    <div
+                        class="all-notification-item"
+                        data-type="order"
+                    >
+
+                        <div class="page-notification-icon">
+                            ✓
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    Order completed
+                                </strong>
+
+                            </div>
+
+
+                            <p>
+                                Order #ORD-1024 has been
+                                successfully completed.
+                            </p>
+
+
+                            <span class="notification-time">
+                                3 hours ago
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=ORD-1024"
+                            class="notification-more"
+                            aria-label="View notification details"
+                        >
+                            &gt;
+                        </a>
+
+                    </div>
+
+
+                    <!-- 5 -->
+
+                    <div
+                        class="all-notification-item"
+                        data-type="order"
+                    >
+
+                        <div class="page-notification-icon">
+                            💳
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    Payment received
+                                </strong>
+
+                            </div>
+
+
+                            <p>
+                                Payment for order #ORD-1023
+                                was successfully received.
+                            </p>
+
+
+                            <span class="notification-time">
+                                5 hours ago
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=PAY-1023"
+                            class="notification-more"
+                            aria-label="View notification details"
+                        >
+                             &gt;
+                        </a>
+
+                    </div>
+
+
+                    <!-- 6 -->
+
+                    <div
+                        class="all-notification-item"
+                        data-type="customer"
+                    >
+
+                        <div class="page-notification-icon">
+                            👤
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    Customer profile updated
+                                </strong>
+
+                            </div>
+
+
+                            <p>
+                                Sipho Khumalo updated
+                                his account information.
+                            </p>
+
+
+                            <span class="notification-time">
+                                Yesterday
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=CUSTOMER-UPDATE-001"
+                            class="notification-more"
+                            aria-label="View customer profile notification"
+                        >
+                            &gt;
+                        </a>
+
+                    </div>
+
+
+                    <!-- 7 -->
+
+                    <div
+                        class="all-notification-item"
+                        data-type="stock"
+                    >
+
+                        <div class="page-notification-icon">
+                            📦
+                        </div>
+
+
+                        <div class="page-notification-content">
+
+                            <div class="notification-title-row">
+
+                                <strong>
+                                    Product restocked
+                                </strong>
+
+                            </div>
+
+
+                            <p>
+                                Wireless Headphones have
+                                been restocked.
+                            </p>
+
+
+                            <span class="notification-time">
+                                Yesterday
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="notification-details.html?id=RESTOCK-001"
+                            class="notification-more"
+                            aria-label="View product restock notification"
+                        >
+                             &gt;
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMPTY -->
+
+                <div
+                    class="notification-empty"
+                    id="notificationEmpty"
+                >
+
+                    <span>🔔</span>
+
+                    <h3>
+                        No notifications found
+                    </h3>
+
+                    <p>
+                        Try changing your filter or search.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+    // ==========================================
+    // NOTIFICATIONS PAGE
+    // ==========================================
+
+    const filters =
+        document.querySelectorAll(
+            ".notification-filter"
+        );
+
+    const notificationItems =
+        document.querySelectorAll(
+            ".all-notification-item"
+        );
+
+    const notificationSearch =
+        document.getElementById(
+            "notificationSearch"
+        );
+
+    const emptyState =
+        document.getElementById(
+            "notificationEmpty"
+        );
+
+    const markAllButton =
+        document.getElementById(
+            "pageMarkAllRead"
+        );
+
+    const unreadCount =
+        document.getElementById(
+            "unreadCount"
+        );
+
+    let currentFilter = "all";
+
+
+    // ==========================================
+    // FILTER
+    // ==========================================
+
+    filters.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                filters.forEach(filter => {
+                    filter.classList.remove(
+                        "active"
+                    );
+                });
+
+                button.classList.add(
+                    "active"
+                );
+
+                currentFilter =
+                    button.dataset.filter;
+
+                filterNotifications();
+
+            }
+        );
+
+    });
+
+
+    // ==========================================
+    // SEARCH
+    // ==========================================
+
+    if (notificationSearch) {
+
+        notificationSearch.addEventListener(
+            "input",
+            filterNotifications
+        );
+
+    }
+
+
+    // ==========================================
+    // FILTER FUNCTION
+    // ==========================================
+
+    function filterNotifications() {
+
+        const searchValue =
+            notificationSearch.value
+                .toLowerCase()
+                .trim();
+
+        let visibleCount = 0;
+
+
+        notificationItems.forEach(item => {
+
+            const type =
+                item.dataset.type;
+
+            const text =
+                item.textContent
+                    .toLowerCase();
+
+
+            let matchesFilter = false;
+
+
+            if (currentFilter === "all") {
+
+                matchesFilter = true;
+
+            }
+
+            else if (
+                currentFilter === "unread"
+            ) {
+
+                matchesFilter =
+                    item.classList.contains(
+                        "unread"
+                    );
+
+            }
+
+            else {
+
+                matchesFilter =
+                    type === currentFilter;
+
+            }
+
+
+            const matchesSearch =
+                text.includes(searchValue);
+
+
+            if (
+                matchesFilter &&
+                matchesSearch
+            ) {
+
+                item.style.display = "flex";
+
+                visibleCount++;
+
+            }
+
+            else {
+
+                item.style.display = "none";
+
+            }
+
+        });
+
+
+        emptyState.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+
+    }
+
+
+    // ==========================================
+    // MARK INDIVIDUAL AS READ
+    // ==========================================
+
+    notificationItems.forEach(item => {
+
+        item.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target.closest(
+                        ".notification-more"
+                    )
+                ) {
+                    return;
+                }
+
+
+                item.classList.remove(
+                    "unread"
+                );
+
+
+                const indicator =
+                    item.querySelector(
+                        ".unread-indicator"
+                    );
+
+
+                if (indicator) {
+
+                    indicator.remove();
+
+                }
+
+
+                updateUnreadCount();
+
+            }
+        );
+
+    });
+
+
+    // ==========================================
+    // MARK ALL AS READ
+    // ==========================================
+
+    if (markAllButton) {
+
+        markAllButton.addEventListener(
+            "click",
+            () => {
+
+                notificationItems.forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "unread"
+                        );
+
+
+                        const indicator =
+                            item.querySelector(
+                                ".unread-indicator"
+                            );
+
+
+                        if (indicator) {
+
+                            indicator.remove();
+
+                        }
+
+                    }
+                );
+
+
+                updateUnreadCount();
+
+                filterNotifications();
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
+    // UPDATE COUNT
+    // ==========================================
+
+    function updateUnreadCount() {
+
+        const unread =
+            document.querySelectorAll(
+                ".all-notification-item.unread"
+            ).length;
+
+
+        if (unreadCount) {
+
+            unreadCount.textContent =
+                unread;
+
+        }
+
+    }
+
+</script>
+
+</body>
+
+</html>

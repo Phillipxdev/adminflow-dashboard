@@ -83,25 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         // Sidebar avatar
+        // ==========================================
+        // ADMIN PROFILE AVATARS
+        // Keep profile images from the HTML
+        // ==========================================
 
         document
-            .querySelectorAll(".user-avatar")
+            .querySelectorAll(".user-avatar, .profile-avatar")
             .forEach(avatar => {
 
-                avatar.textContent =
-                    initials || "AD";
+                const profileImage =
+                    avatar.querySelector(".admin-profile-image");
 
-            });
-
-
-        // Header avatar
-
-        document
-            .querySelectorAll(".profile-avatar")
-            .forEach(avatar => {
-
-                avatar.textContent =
-                    initials || "AD";
+                // Only show initials when there is no image
+                if (!profileImage) {
+                    avatar.textContent =
+                        initials || "AD";
+                }
 
             });
 
@@ -7048,38 +7046,49 @@ if (document.getElementById("profileSettings")) {
 
 
         const settingsAvatar =
-            document.getElementById(
-                "settingsAvatar"
-            );
+                document.getElementById(
+                    "settingsAvatar"
+                );
 
 
-        if (settingsAvatar) {
-
-            settingsAvatar.textContent =
-                initials;
-        }
-
-
-        // Sidebar avatars
-
-        document
-            .querySelectorAll(".user-avatar")
-            .forEach(avatar => {
-
-                avatar.textContent =
+            // Settings profile picture
+            if (
+                settingsAvatar &&
+                !settingsAvatar.querySelector(".admin-profile-image")
+            ) {
+                settingsAvatar.textContent =
                     initials;
-            });
+            }
 
 
-        // Header profile avatars
+            // Sidebar avatars
+            document
+                .querySelectorAll(".user-avatar")
+                .forEach(avatar => {
 
-        document
-            .querySelectorAll(".profile-avatar")
-            .forEach(avatar => {
+                    const profileImage =
+                        avatar.querySelector(".admin-profile-image");
 
-                avatar.textContent =
-                    initials;
-            });
+                    if (!profileImage) {
+                        avatar.textContent =
+                            initials;
+                    }
+                });
+
+
+            // Header profile avatars
+            document
+                .querySelectorAll(".profile-avatar")
+                .forEach(avatar => {
+
+                    const profileImage =
+                        avatar.querySelector(".admin-profile-image");
+
+                    if (!profileImage) {
+                        avatar.textContent =
+                            initials;
+                    }
+                });
 
 
         // Sidebar name
@@ -8437,5 +8446,257 @@ if (helpSearch) {
     );
 
 }
+
+});
+
+// ==========================================
+// NOTIFICATIONS
+// ==========================================
+
+const notificationBtn =
+    document.getElementById("notificationBtn");
+
+const notificationDropdown =
+    document.getElementById("notificationDropdown");
+
+const notificationDot =
+    document.getElementById("notificationDot");
+
+const markAllRead =
+    document.getElementById("markAllRead");
+
+
+if (notificationBtn && notificationDropdown) {
+
+    // Open / close notifications
+    notificationBtn.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        notificationDropdown.classList.toggle("show");
+
+        const isOpen =
+            notificationDropdown.classList.contains("show");
+
+        notificationBtn.setAttribute(
+            "aria-expanded",
+            isOpen.toString()
+        );
+
+    });
+
+
+    // Prevent dropdown click from closing it
+    notificationDropdown.addEventListener(
+        "click",
+        (event) => {
+            event.stopPropagation();
+        }
+    );
+
+
+    // Close when clicking outside
+    document.addEventListener("click", () => {
+
+        notificationDropdown.classList.remove("show");
+
+        notificationBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+
+}
+
+
+// ==========================================
+// MARK ALL AS READ
+// ==========================================
+
+if (markAllRead) {
+
+    markAllRead.addEventListener("click", () => {
+
+        const unreadNotifications =
+            document.querySelectorAll(
+                ".notification-item.unread"
+            );
+
+        unreadNotifications.forEach(notification => {
+
+            notification.classList.remove("unread");
+
+        });
+
+
+        // Remove red notification indicator
+        if (notificationDot) {
+            notificationDot.style.display = "none";
+        }
+
+
+        // Change unread counter
+        const unreadText =
+            document.querySelector(
+                ".notification-header span"
+            );
+
+        if (unreadText) {
+            unreadText.textContent = "0 unread";
+        }
+
+    });
+
+}
+
+// ==========================================
+// RECENT ORDER ACTION MENUS
+// ==========================================
+
+const orderActionWrappers = document.querySelectorAll(
+    ".order-action-wrapper"
+);
+
+orderActionWrappers.forEach((wrapper) => {
+
+    const actionButton = wrapper.querySelector(".table-action");
+    const actionMenu = wrapper.querySelector(".order-action-menu");
+
+    if (!actionButton || !actionMenu) return;
+
+    actionButton.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        const isOpen = wrapper.classList.contains("active");
+
+        // Close all other menus
+        orderActionWrappers.forEach((otherWrapper) => {
+
+            otherWrapper.classList.remove("active");
+
+            const otherButton =
+                otherWrapper.querySelector(".table-action");
+
+            if (otherButton) {
+                otherButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+        });
+
+        // Open selected menu
+        if (!isOpen) {
+
+            wrapper.classList.add("active");
+
+            actionButton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+        }
+
+    });
+
+});
+
+
+// ==========================================
+// CLOSE MENU WHEN CLICKING OUTSIDE
+// ==========================================
+
+document.addEventListener("click", () => {
+
+    orderActionWrappers.forEach((wrapper) => {
+
+        wrapper.classList.remove("active");
+
+        const actionButton =
+            wrapper.querySelector(".table-action");
+
+        if (actionButton) {
+
+            actionButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+
+});
+
+
+// ==========================================
+// CLOSE WITH ESC KEY
+// ==========================================
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key !== "Escape") return;
+
+    orderActionWrappers.forEach((wrapper) => {
+
+        wrapper.classList.remove("active");
+
+        const actionButton =
+            wrapper.querySelector(".table-action");
+
+        if (actionButton) {
+
+            actionButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+
+});
+
+// ==========================================
+// PRODUCT CLICK LOADING
+// ==========================================
+
+const productClickLoader =
+    document.getElementById("productClickLoader");
+
+const productRows =
+    document.querySelectorAll(
+        "#productsTableBody tr[data-id]"
+    );
+
+productRows.forEach(row => {
+
+    row.addEventListener("click", event => {
+
+        // Don't trigger when Edit/Delete is clicked
+        if (
+            event.target.closest(".edit-product-btn") ||
+            event.target.closest(".delete-product-btn")
+        ) {
+            return;
+        }
+
+        const productId =
+            row.dataset.id;
+
+        productClickLoader?.classList.add("active");
+
+        setTimeout(() => {
+
+            // Change this to your product details page
+            window.location.href =
+                `product-details.html?id=${productId}`;
+
+        }, 500);
+
+    });
 
 });

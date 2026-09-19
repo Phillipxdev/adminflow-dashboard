@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="AdminFlow notification details."
+    >
+
+    <title>Notification Details | AdminFlow</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ==========================================
+           NOTIFICATION DETAILS
+        ========================================== */
+
+        .details-page {
+            max-width: 1000px;
+        }
+
+        .details-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .details-heading h2 {
+            margin: 0 0 6px;
+        }
+
+        .details-heading p {
+            margin: 0;
+            color: var(--text-muted, #64748b);
+        }
+
+        .back-notifications {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 10px 15px;
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 10px;
+
+            background: var(--card-bg, #fff);
+
+            color: var(--primary, #4f46e5);
+
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+        .back-notifications:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* ==========================================
+           MAIN CARD
+        ========================================== */
+
+        .notification-details-card {
+            background: var(--card-bg, #fff);
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* Top */
+
+        .details-card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+
+            padding: 28px;
+
+            border-bottom:
+                1px solid var(--border-color, #e2e8f0);
+        }
+
+        .details-icon {
+            width: 55px;
+            height: 55px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: rgba(79, 70, 229, 0.1);
+
+            font-size: 23px;
+        }
+
+        .details-title {
+            flex: 1;
+        }
+
+        .details-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 5px;
+        }
+
+        .details-title h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .status-badge {
+            padding: 4px 9px;
+
+            border-radius: 20px;
+
+            background: rgba(79, 70, 229, 0.1);
+
+            color: var(--primary, #4f46e5);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .details-title p {
+            margin: 0 0 7px;
+
+            color: var(--text-muted, #64748b);
+
+            line-height: 1.6;
+        }
+
+        .details-time {
+            color: var(--text-muted, #94a3b8);
+            font-size: 12px;
+        }
+
+
+        /* ==========================================
+           INFORMATION
+        ========================================== */
+
+        .details-body {
+            padding: 28px;
+        }
+
+        .details-body h3 {
+            margin: 0 0 20px;
+            font-size: 16px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+        }
+
+        .detail-item {
+            padding: 17px;
+
+            background: rgba(148, 163, 184, 0.07);
+
+            border-radius: 12px;
+        }
+
+        .detail-item span {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: var(--text-muted, #64748b);
+
+            font-size: 12px;
+        }
+
+        .detail-item strong {
+            font-size: 14px;
+        }
+
+
+        /* ==========================================
+           MESSAGE
+        ========================================== */
+
+        .notification-message-card {
+            padding: 24px;
+
+            background: var(--card-bg, #fff);
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            border-radius: 16px;
+
+            margin-bottom: 20px;
+        }
+
+        .notification-message-card h3 {
+            margin: 0 0 12px;
+        }
+
+        .notification-message-card p {
+            margin: 0;
+
+            color: var(--text-muted, #64748b);
+
+            line-height: 1.7;
+        }
+
+
+        /* ==========================================
+           ACTIONS
+        ========================================== */
+
+        .details-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .details-action-btn {
+            padding: 11px 17px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid var(--border-color, #e2e8f0);
+
+            background: var(--card-bg, #fff);
+
+            color: inherit;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .details-action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .details-action-btn.primary {
+            border-color: var(--primary, #4f46e5);
+            background: var(--primary, #4f46e5);
+            color: #fff;
+        }
+
+        .details-action-btn.danger {
+            color: #dc2626;
+        }
+
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            .details-heading {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-card-top {
+                padding: 20px;
+            }
+
+            .details-body {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard-layout">
+
+
+    <!-- ==========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    A
+                </span>
+
+                <span class="logo-text">
+                    Admin<span>Flow</span>
+                </span>
+
+            </a>
+
+
+            <button
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Close sidebar"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-title">
+                MENU
+            </p>
+
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">▦</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a href="products.html" class="nav-link">
+                <span class="nav-icon">□</span>
+                <span>Products</span>
+            </a>
+
+
+            <a href="orders.html" class="nav-link">
+
+                <span class="nav-icon">
+                    🛒
+                </span>
+
+                <span>Orders</span>
+
+                <span class="nav-badge">
+                    12
+                </span>
+
+            </a>
+
+
+            <a href="customers.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a href="analytics.html" class="nav-link">
+                <span class="nav-icon">◒</span>
+                <span>Analytics</span>
+            </a>
+
+
+            <p class="nav-title settings-title">
+                MANAGEMENT
+            </p>
+
+
+            <a href="settings.html" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+
+            <a href="help.html" class="nav-link">
+                <span class="nav-icon">?</span>
+                <span>Help Center</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+           <div class="profile-avatar">
+                <img
+                    src="profile.jpg"
+                    alt="Thabiso Shezi"
+                    class="admin-profile-image"
+                >
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>
+                    Thabiso Shezi
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                title="Logout"
+                aria-label="Logout"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open sidebar"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Notification Details
+                    </h1>
+
+                    <p>
+                        View notification information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="search"
+                        placeholder="Search..."
+                        aria-label="Search"
+                    >
+
+                </div>
+
+
+                <button
+                    class="header-btn"
+                    id="themeToggle"
+                    aria-label="Change theme"
+                >
+                    ☾
+                </button>
+
+
+                <a
+                    href="notifications.html"
+                    class="header-btn notification-btn"
+                    aria-label="Notifications"
+                >
+                    🔔
+                </a>
+
+
+                <button class="profile-button">
+
+                    <div class="profile-avatar">
+                        <img
+                            src="profile.jpg"
+                            alt="Thabiso Shezi"
+                            class="admin-profile-image"
+                        >
+                    </div>
+
+                    <div class="profile-details">
+
+                        <strong>
+                            Thabiso
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+                    <span class="profile-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==========================================
+             CONTENT
+        ========================================== -->
+
+        <div class="dashboard-content details-page">
+
+
+            <div class="details-heading">
+
+                <div>
+
+                    <h2>
+                        Notification
+                    </h2>
+
+                    <p>
+                        Review the complete notification details.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="notifications.html"
+                    class="back-notifications"
+                >
+                    ← All Notifications
+                </a>
+
+            </div>
+
+
+            <!-- ======================================
+                 NOTIFICATION
+            ======================================= -->
+
+            <section class="notification-details-card">
+
+
+                <div class="details-card-top">
+
+
+                    <div
+                        class="details-icon"
+                        id="detailsIcon"
+                    >
+                        🔔
+                    </div>
+
+
+                    <div class="details-title">
+
+                        <div class="details-title-row">
+
+                            <h2 id="detailsTitle">
+                                Notification
+                            </h2>
+
+                            <span class="status-badge">
+                                Read
+                            </span>
+
+                        </div>
+
+
+                        <p id="detailsDescription">
+                            Notification details.
+                        </p>
+
+
+                        <span
+                            class="details-time"
+                            id="detailsTime"
+                        >
+                            Recently
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMATION -->
+
+                <div class="details-body">
+
+                    <h3>
+                        Information
+                    </h3>
+
+
+                    <div
+                        class="details-grid"
+                        id="detailsGrid"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MESSAGE -->
+
+            <section class="notification-message-card">
+
+                <h3>
+                    Message
+                </h3>
+
+                <p id="fullMessage">
+                    Notification information will appear here.
+                </p>
+
+            </section>
+
+
+            <!-- ACTIONS -->
+
+            <div class="details-actions">
+
+                <a
+                    href="notifications.html"
+                    class="details-action-btn"
+                >
+                    ← Back
+                </a>
+
+
+                <button
+                    class="details-action-btn primary"
+                    id="markReadBtn"
+                >
+                    ✓ Mark as read
+                </button>
+
+
+                <button
+                    class="details-action-btn danger"
+                    id="deleteNotificationBtn"
+                >
+                    Delete notification
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+></div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+    // ==========================================
+    // NOTIFICATION DATA
+    // ==========================================
+
+    const notifications = {
+
+    "ORD-1025": {
+        icon: "🛒",
+        title: "New order received",
+        description: "Order #ORD-1025 has been placed successfully.",
+        time: "5 minutes ago",
+
+        message:
+            "A new customer order has been received. Review the order information and begin processing the purchase.",
+
+        details: {
+            "Order ID": "#ORD-1025",
+            "Type": "New Order",
+            "Status": "Pending",
+            "Amount": "R1,499",
+            "Customer": "Customer",
+            "Received": "5 minutes ago"
+        }
+    },
+
+
+    "CUSTOMER-001": {
+        icon: "👤",
+        title: "New customer registered",
+        description: "A new customer created an account.",
+        time: "28 minutes ago",
+
+        message:
+            "A new customer has successfully registered an account on your store.",
+
+        details: {
+            "Type": "Customer",
+            "Event": "Registration",
+            "Status": "Active",
+            "Account": "New Account",
+            "Source": "Online Store",
+            "Received": "28 minutes ago"
+        }
+    },
+
+
+    "STOCK-001": {
+        icon: "⚠️",
+        title: "Low stock warning",
+        description: "Classic Backpack has only 5 units remaining.",
+        time: "2 hours ago",
+
+        message:
+            "Classic Backpack inventory has reached the low-stock threshold. Consider restocking the product to prevent it from becoming unavailable.",
+
+        details: {
+            "Product": "Classic Backpack",
+            "Type": "Stock Warning",
+            "Stock": "5 units",
+            "Status": "Low Stock",
+            "Action": "Restock Recommended",
+            "Received": "2 hours ago"
+        }
+    },
+
+
+    "ORD-1024": {
+        icon: "✓",
+        title: "Order completed",
+        description: "Order #ORD-1024 has been successfully completed.",
+        time: "3 hours ago",
+
+        message:
+            "The customer order has completed processing successfully.",
+
+        details: {
+            "Order ID": "#ORD-1024",
+            "Type": "Order",
+            "Status": "Completed",
+            "Customer": "Nomsa Mthembu",
+            "Amount": "R1,299",
+            "Received": "3 hours ago"
+        }
+    },
+
+
+    "PAY-1023": {
+        icon: "💳",
+        title: "Payment received",
+        description: "Payment for order #ORD-1023 was successfully received.",
+        time: "5 hours ago",
+
+        message:
+            "The payment associated with order #ORD-1023 has been received successfully.",
+
+        details: {
+            "Order ID": "#ORD-1023",
+            "Type": "Payment",
+            "Status": "Received",
+            "Amount": "R2,499",
+            "Payment": "Successful",
+            "Received": "5 hours ago"
+        }
+    },
+
+
+    "CUSTOMER-UPDATE-001": {
+        icon: "👤",
+        title: "Customer profile updated",
+        description: "Sipho Khumalo updated his account information.",
+        time: "Yesterday",
+
+        message:
+            "Sipho Khumalo recently updated information associated with his customer account.",
+
+        details: {
+            "Customer": "Sipho Khumalo",
+            "Type": "Customer Update",
+            "Event": "Profile Updated",
+            "Status": "Completed",
+            "Account": "Active",
+            "Received": "Yesterday"
+        }
+    },
+
+
+    "RESTOCK-001": {
+        icon: "📦",
+        title: "Product restocked",
+        description: "Wireless Headphones have been restocked.",
+        time: "Yesterday",
+
+        message:
+            "Wireless Headphones inventory has been replenished and the product is available for customer orders.",
+
+        details: {
+            "Product": "Wireless Headphones",
+            "Type": "Inventory",
+            "Event": "Product Restocked",
+            "Status": "In Stock",
+            "Availability": "Available",
+            "Received": "Yesterday"
+        }
+    }
+
+};
+
+
+    // ==========================================
+    // MARK READ
+    // ==========================================
+
+    const markReadBtn =
+        document.getElementById(
+            "markReadBtn"
+        );
+
+
+    markReadBtn.addEventListener(
+        "click",
+        () => {
+
+            markReadBtn.textContent =
+                "✓ Read";
+
+            markReadBtn.disabled =
+                true;
+
+        }
+    );
+
+
+    // ==========================================
+    // DELETE
+    // ==========================================
+
+    const deleteButton =
+        document.getElementById(
+            "deleteNotificationBtn"
+        );
+
+
+    deleteButton.addEventListener(
+        "click",
+        () => {
+
+            const confirmed =
+                confirm(
+                    "Delete this notification?"
+                );
+
+
+            if (confirmed) {
+
+                window.location.href =
+                    "notifications.html";
+
+            }
+
+        }
+    );
+
+    // ==========================================
+    // GET NOTIFICATION ID FROM URL
+    // ==========================================
+
+    const params = new URLSearchParams(window.location.search);
+
+    const notificationId = params.get("id");
+
+    const notification = notifications[notificationId];
+
+
+    // ==========================================
+    // DISPLAY NOTIFICATION
+    // ==========================================
+
+    if (notification) {
+
+        document.getElementById("detailsIcon").textContent =
+            notification.icon;
+
+        document.getElementById("detailsTitle").textContent =
+            notification.title;
+
+        document.getElementById("detailsDescription").textContent =
+            notification.description;
+
+        document.getElementById("detailsTime").textContent =
+            notification.time;
+
+        document.getElementById("fullMessage").textContent =
+            notification.message;
+
+
+        // ==========================================
+        // CREATE INFORMATION CARDS
+        // ==========================================
+
+        const detailsGrid =
+            document.getElementById("detailsGrid");
+
+        detailsGrid.innerHTML = "";
+
+
+        Object.entries(notification.details).forEach(
+            ([label, value]) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "detail-item";
+
+
+                const labelElement =
+                    document.createElement("span");
+
+                labelElement.textContent = label;
+
+
+                const valueElement =
+                    document.createElement("strong");
+
+                valueElement.textContent = value;
+
+
+                item.appendChild(labelElement);
+
+                item.appendChild(valueElement);
+
+                detailsGrid.appendChild(item);
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
+    // NOTIFICATION NOT FOUND
+    // ==========================================
+
+    else {
+
+        document.getElementById("detailsIcon").textContent =
+            "⚠";
+
+        document.getElementById("detailsTitle").textContent =
+            "Notification not found";
+
+        document.getElementById("detailsDescription").textContent =
+            "The notification you requested could not be found.";
+
+        document.getElementById("detailsTime").textContent =
+            "";
+
+        document.getElementById("fullMessage").textContent =
+            "Return to the notifications page and select another notification.";
+
+    }
+
+</script>
+
+</body>
+</html>

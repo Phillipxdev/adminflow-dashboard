@@ -927,9 +927,7 @@ body.dark .top-header {
 .card-menu,
 .table-action {
     background: transparent;
-
     color: var(--text-secondary);
-
     letter-spacing: 1px;
 }
 
@@ -5902,5 +5900,808 @@ body.dark .help-support-card {
 
     .help-search input {
         padding-right: 15px;
+    }
+}
+
+/* ==========================================
+   NOTIFICATIONS
+========================================== */
+
+.notification-wrapper {
+    position: relative;
+}
+
+.notification-btn {
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.notification-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 7px;
+    right: 7px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 2px solid var(--card-bg, #fff);
+}
+
+/* Dropdown */
+
+.notification-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+
+    width: 360px;
+
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition: 0.25s ease;
+
+    z-index: 1000;
+}
+
+.notification-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Header */
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 20px;
+
+    border-bottom:
+        1px solid var(--border-color, #e2e8f0);
+}
+
+.notification-header h3 {
+    margin: 0 0 3px;
+    font-size: 16px;
+}
+
+.notification-header span {
+    font-size: 12px;
+    color: var(--text-muted, #64748b);
+}
+
+.notification-header button {
+    border: none;
+    background: transparent;
+
+    color: var(--primary, #4f46e5);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+/* Notification */
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+
+    padding: 16px 20px;
+
+    border-bottom:
+        1px solid var(--border-color, #e2e8f0);
+
+    transition: 0.2s ease;
+
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background: rgba(79, 70, 229, 0.05);
+}
+
+.notification-item.unread {
+    background: rgba(79, 70, 229, 0.06);
+}
+
+.notification-item-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: rgba(79, 70, 229, 0.1);
+}
+
+/* Text */
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-content strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.notification-content p {
+    margin: 0 0 5px;
+
+    font-size: 13px;
+    line-height: 1.4;
+
+    color: var(--text-muted, #64748b);
+}
+
+.notification-content span {
+    font-size: 11px;
+    color: var(--text-muted, #94a3b8);
+}
+
+/* Footer */
+
+.notification-footer {
+    display: block;
+
+    padding: 14px;
+
+    text-align: center;
+
+    color: var(--primary, #4f46e5);
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.notification-footer:hover {
+    background: rgba(79, 70, 229, 0.05);
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .notification-dropdown {
+        position: fixed;
+
+        top: 75px;
+        left: 15px;
+        right: 15px;
+
+        width: auto;
+    }
+}
+
+/* ==========================================
+   PRODUCT PAGE ACTIONS
+========================================== */
+
+.products-page-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.back-dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 16px;
+
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 10px;
+
+    background: var(--card-bg, #ffffff);
+    color: var(--primary, #4f46e5);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.back-dashboard-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(79, 70, 229, 0.06);
+    border-color: var(--primary, #4f46e5);
+}
+
+
+/* ==========================================
+   HIDE BACK BUTTON ON MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .back-dashboard-btn {
+        display: none;
+    }
+
+}
+
+
+
+/* ==========================================
+   RECENT ORDER ACTION MENU
+========================================== */
+
+.order-action-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Three-dot button */
+.table-action {
+    width: 36px;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--text-secondary, #64748b);
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.table-action:hover,
+.table-action[aria-expanded="true"] {
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--primary, #4f46e5);
+    border-color: rgba(79, 70, 229, 0.15);
+}
+
+
+/* ==========================================
+   DROPDOWN
+========================================== */
+
+.order-action-menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    right: 0;
+
+    width: 175px;
+
+    padding: 6px;
+
+    background: var(--card-bg, #ffffff);
+
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.12);
+
+    z-index: 100;
+
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.18s ease,
+        visibility 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+/* Show menu */
+.order-action-wrapper.active .order-action-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* ==========================================
+   MENU ITEMS
+========================================== */
+
+.order-action-menu a,
+.order-action-menu button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 10px 12px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: transparent;
+    color: var(--text-primary, #1e293b);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    text-align: left;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.order-action-menu a:hover,
+.order-action-menu button:hover {
+    background: rgba(79, 70, 229, 0.08);
+    color: var(--primary, #4f46e5);
+}
+
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark-mode .order-action-menu {
+    background: #111827;
+    border-color: #253047;
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .order-action-menu a,
+body.dark-mode .order-action-menu button {
+    color: #e5e7eb;
+}
+
+body.dark-mode .order-action-menu a:hover,
+body.dark-mode .order-action-menu button:hover {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .order-action-menu {
+        width: 165px;
+        right: 0;
+    }
+
+}
+
+/* ==========================================
+   ADMIN PROFILE PHOTO
+========================================== */
+
+.user-avatar,
+.profile-avatar {
+    overflow: hidden;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.admin-profile-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+/* =========================
+   ADMIN PROFILE IMAGE
+========================= */
+
+.user-avatar,
+.profile-avatar {
+    overflow: hidden;
+    padding: 0;
+}
+
+.admin-profile-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.admin-profile-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+/* ==========================================
+   ADMIN REAL PROFILE PHOTO
+========================================== */
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    background: none;
+}
+
+.user-avatar .admin-profile-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: inherit;
+}
+
+.profile-avatar {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    background: none;
+}
+
+.profile-avatar .admin-profile-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-avatar {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    font-size: 10px;
+}
+
+/* ==========================================
+   ADMIN PROFILE PHOTOS
+========================================== */
+
+.user-avatar,
+.profile-avatar {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+/* Bottom-left */
+.user-avatar {
+    width: 42px;
+    height: 42px;
+}
+
+/* Top-right */
+.profile-avatar {
+    width: 36px;
+    height: 36px;
+}
+
+.user-avatar .admin-profile-image,
+.profile-avatar .admin-profile-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+/* ==========================================
+   ADMIN PROFILE PICTURES - FINAL FIX
+========================================== */
+
+.user-avatar,
+.profile-avatar {
+    padding: 0 !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    flex-shrink: 0;
+}
+
+/* Bottom-left picture */
+.user-avatar {
+    width: 42px !important;
+    height: 42px !important;
+}
+
+/* Top-right picture */
+.profile-avatar {
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.admin-profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 50% !important;
+}
+
+/* ADMIN PROFILE PHOTO */
+
+.user-avatar,
+.profile-avatar {
+    padding: 0 !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+}
+
+.user-avatar {
+    width: 42px !important;
+    height: 42px !important;
+}
+
+.profile-avatar {
+    width: 36px !important;
+    height: 36px !important;
+}
+
+.admin-profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* =====================================================
+   ADMIN PROFILE IMAGES
+   ===================================================== */
+
+/* Bottom-left avatar */
+.user-avatar {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* Top-right avatar */
+.profile-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* Actual photo */
+.user-avatar img,
+.profile-avatar img,
+.admin-profile-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 50% !important;
+}
+
+/* ==========================================
+   PROFILE IMAGE FIX
+========================================== */
+
+.user-avatar,
+.profile-avatar {
+    position: relative;
+    overflow: hidden !important;
+    padding: 0 !important;
+    background: none !important;
+}
+
+.user-avatar {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px;
+    border-radius: 50% !important;
+}
+
+.profile-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px;
+    border-radius: 50% !important;
+}
+
+.admin-profile-image {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    border-radius: inherit !important;
+}
+
+
+/* =====================================================
+   ADMIN PROFILE PHOTO
+   ===================================================== */
+
+.user-avatar,
+.profile-avatar {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+    color: transparent;
+}
+
+/* Bottom-left sidebar photo */
+.user-avatar {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+}
+
+/* Top-right header photo */
+.profile-avatar {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    border-radius: 50%;
+}
+
+/* Actual profile image */
+.admin-profile-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: inherit;
+}
+
+/* ==========================================
+   PRODUCT CLICK LOADER
+========================================== */
+
+.product-click-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(6px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.product-click-loader.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.product-loader-spinner {
+    width: 42px;
+    height: 42px;
+
+    border: 4px solid #e5e7eb;
+    border-top-color: #6366f1;
+    border-radius: 50%;
+
+    animation: productSpin 0.7s linear infinite;
+}
+
+.product-click-loader p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@keyframes productSpin {
+    to {
+        transform: rotate(360deg);
     }
 }

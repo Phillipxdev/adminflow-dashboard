@@ -166,7 +166,11 @@
         <div class="sidebar-user">
 
             <div class="user-avatar">
-                TS
+                <img
+                    src="profile.jpg"
+                    alt="Thabiso Shezi"
+                    class="admin-profile-image"
+                >
             </div>
 
 
@@ -267,7 +271,11 @@
                 <button class="profile-button">
 
                     <div class="profile-avatar">
-                        TS
+                        <img
+                            src="profile.jpg"
+                            alt="Thabiso Shezi"
+                            class="admin-profile-image"
+                        >
                     </div>
 
 
@@ -309,7 +317,6 @@
             <div class="products-page-heading">
 
                 <div>
-
                     <h2>
                         Business Analytics
                     </h2>
@@ -317,33 +324,37 @@
                     <p>
                         Track revenue, orders, customers and product performance.
                     </p>
-
                 </div>
 
+                <div class="products-page-actions">
 
-                <select
-                    id="analyticsPeriod"
-                    class="analytics-period-select"
-                    aria-label="Analytics period"
-                >
+                    <a href="index.html" class="back-dashboard-btn">
+                        ← Back to Dashboard
+                    </a>
 
-                    <option value="7">
-                        Last 7 Days
-                    </option>
+                    <select
+                        id="analyticsPeriod"
+                        class="analytics-period-select"
+                        aria-label="Analytics period"
+                    >
+                        <option value="7">
+                            Last 7 Days
+                        </option>
 
-                    <option value="30" selected>
-                        Last 30 Days
-                    </option>
+                        <option value="30" selected>
+                            Last 30 Days
+                        </option>
 
-                    <option value="90">
-                        Last 90 Days
-                    </option>
+                        <option value="90">
+                            Last 90 Days
+                        </option>
 
-                    <option value="all">
-                        All Time
-                    </option>
+                        <option value="all">
+                            All Time
+                        </option>
+                    </select>
 
-                </select>
+                </div>
 
             </div>
 
